@@ -3,6 +3,7 @@ import logo from "../../assets/Images/orbitrides-logo.png";
 import search from "../../assets/Icons/search.svg";
 import profileImg from "../../assets/Images/dumy-profile-img.avif";
 import Button from "../Button/Button";
+import HamburgerMenu from "./HamburgerMenu";
 
 const Navbar = () => {
   const navlinks = [
@@ -23,18 +24,18 @@ const Navbar = () => {
       path: "contact-us",
     },
     {
-      label: "Blog ",
+      label: "Blogs ",
       path: "blogs",
     },
   ];
   const user = false;
   return (
-    <div className="flex items-center justify-between max-w-[1300px] mx-auto mt-5 font-SpaceGrotesk">
+    <div className="flex items-center justify-between max-w-[1300px] mx-auto mt-5 font-SpaceGrotesk px-4 md:px-7 xl:px-0">
       <div className="flex items-center gap-10">
         <Link to={"/"} className="">
           <img src={logo} alt="" className="w-60" />
         </Link>
-        <li className="flex items-center gap-5">
+        <li className="hidden lg:flex items-center gap-5">
           {navlinks.map((navlink, index) => (
             <Link
               key={index}
@@ -48,7 +49,10 @@ const Navbar = () => {
       </div>
 
       <div className="flex items-center gap-6">
-        <div className="relative">
+
+
+      <div className="flex items-center gap-6">
+        <div className="relative hidden xl:block">
           <img
             src={search}
             alt=""
@@ -61,6 +65,7 @@ const Navbar = () => {
           />
         </div>
 
+        <div className="hidden md:block">
         {
             user ?
             <div className="size-11 rounded-full">
@@ -72,9 +77,12 @@ const Navbar = () => {
             <Button variant="primary">Signup</Button>
           </div>
         }
+        </div>
 
         
       </div>
+        <HamburgerMenu/>
+        </div>
 
      
     </div>
