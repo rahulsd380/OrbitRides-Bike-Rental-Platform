@@ -102,7 +102,7 @@ const Footer = () => {
       ];
 
   return (
-    <div className="bg-[#2f3d46] p-10 font-SpaceGrotesk">
+    <div className="bg-[#2f3d46] p-10 font-SpaceGrotesk mt-14">
       <footer className="max-w-[1300px] mx-auto">
 
       <div className="flex flex-col xl:flex-row justify-between gap-10 xl:gap-0">

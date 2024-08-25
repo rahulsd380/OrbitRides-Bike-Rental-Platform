@@ -95,7 +95,7 @@ const HamburgerMenu = (): JSX.Element => {
       />
 
       <div
-        className={`overflow-y-scroll fixed inset-y-0 right-0 z-50 bg-gradient-to-r from-teal-900 to-teal-900 text-white w-64 h-screen transition-all duration-300 transform ${
+        className={`overflow-y-scroll fixed inset-y-0 right-0 z-50 bg-[#2f3d46] text-white w-64 h-screen transition-all duration-300 transform ${
           isHamburgerOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
