@@ -74,14 +74,19 @@ const Navbar = () => {
           :
           <div className="flex items-start gap-3">
             <Button variant="secondary">Login</Button>
+            <Link to={"/signup"}>
             <Button variant="primary">Signup</Button>
+            </Link>
           </div>
         }
         </div>
 
         
       </div>
+      <div className="block xl:hidden">
+
         <HamburgerMenu/>
+      </div>
         </div>
 
      

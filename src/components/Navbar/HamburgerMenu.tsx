@@ -2,7 +2,10 @@ import { useEffect, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { Link } from "react-router-dom";
-import { IoChatbubbleOutline, IoInformationCircleOutline } from "react-icons/io5";
+import {
+  IoChatbubbleOutline,
+  IoInformationCircleOutline,
+} from "react-icons/io5";
 import { IoSettingsOutline } from "react-icons/io5";
 import { MdDashboard } from "react-icons/md";
 import { IoLogOutOutline } from "react-icons/io5";
@@ -14,10 +17,7 @@ import { FaBookReader } from "react-icons/fa";
 import { RiEBikeFill } from "react-icons/ri";
 import { BiSolidContact } from "react-icons/bi";
 
-
-
 const HamburgerMenu = (): JSX.Element => {
-    
   const links = [
     {
       pathName: "Home",
@@ -44,10 +44,9 @@ const HamburgerMenu = (): JSX.Element => {
       link: "blogs",
       icon: <FaBookReader />,
     },
-
   ];
   // Just for testing puspose now
-  const [user, setUser] = useState(false)
+  const [user, setUser] = useState(false);
   const accountLinks = [
     {
       pathName: "Chat",
@@ -88,9 +87,8 @@ const HamburgerMenu = (): JSX.Element => {
     };
   }, [isHamburgerOpen]);
 
-  
   return (
-    <div className="relative hamburgerMenu block xl:hidden">
+    <div className="relative hamburgerMenu ">
       <AiOutlineMenu
         onClick={toggleHamburgerMenu}
         className="cursor-pointer text-[26px] text-gray-500 hover:text-blue-500 transition duration-300"
@@ -105,13 +103,13 @@ const HamburgerMenu = (): JSX.Element => {
           <div>
             <div className="flex justify-between items-center p-[9px]">
               {/* Logo */}
-             {/* Logo */}
-        <Link to={"/"} className="flex items-center gap-2">
-          <img className="w-16" src={logo} alt="" />
-          <h1 className="font-Roboto font-bold text-[27px] white">
-            OrbitRides
-          </h1>
-        </Link>
+              {/* Logo */}
+              <Link to={"/"} className="flex items-center gap-2">
+                <img className="w-16" src={logo} alt="" />
+                <h1 className="font-Roboto font-bold text-[27px] white">
+                  OrbitRides
+                </h1>
+              </Link>
 
               {/* Hamburger menu close button */}
               <MdKeyboardArrowLeft
@@ -120,23 +118,22 @@ const HamburgerMenu = (): JSX.Element => {
               />
             </div>
 
-            
             <div className="w-full h-[1px] bg-gray-500"></div>
-
-            
 
             {/* Navigations links */}
             <div className="flex flex-col items-start gap-5 p-4 border-b border-neutral-40/50 pb-3">
-
-            <div className="relative">
-              <img src={search} alt="" className="absolute left-[6px] top-3 size-5" />
-              <input
-                placeholder="Want to learn?"
-                type="text"
-                className="border-[1px] border-neutral-40/50 rounded-lg bg-neutral-60/10 py-2 pl-7 pr-2 focus:border-primary-10 transition duration-300 focus:outline-none text-gray-900"
-              />
-            </div>
-
+              <div className="relative">
+                <img
+                  src={search}
+                  alt=""
+                  className="absolute left-[6px] top-3 size-5"
+                />
+                <input
+                  placeholder="Want to learn?"
+                  type="text"
+                  className="border-[1px] border-neutral-40/50 rounded-lg bg-neutral-60/10 py-2 pl-7 pr-2 focus:border-primary-10 transition duration-300 focus:outline-none text-gray-900"
+                />
+              </div>
 
               <h1 className="text-base font-normal font-Roboto text-gray-200">
                 Main Menu
@@ -170,19 +167,17 @@ const HamburgerMenu = (): JSX.Element => {
               ))}
 
               {/* Logout button */}
-              {
-                user === false ?
+              {user === false ? (
                 <button className="font-Roboto text-gray-300 font-normal hover:text-blue-400 transition duration-300 flex items-center gap-2 transform hover:-translate-y-0.5">
-                <CiLogout />
-                Logout
-              </button>
-
-              :
-              <button className="font-Roboto text-gray-300 font-normal hover:text-blue-400 transition duration-300 flex items-center gap-2 transform hover:-translate-y-0.5">
-                <IoLogOutOutline />
-                Login
-              </button>
-              }
+                  <CiLogout />
+                  Logout
+                </button>
+              ) : (
+                <button className="font-Roboto text-gray-300 font-normal hover:text-blue-400 transition duration-300 flex items-center gap-2 transform hover:-translate-y-0.5">
+                  <IoLogOutOutline />
+                  Login
+                </button>
+              )}
             </div>
           </div>
         )}
