@@ -1,3 +1,4 @@
+import ContactUs from "../../components/ContactUs/ContactUs";
 import FeaturedBikes from "../../components/FeaturedBikes/FeaturedBikes";
 import Hero from "../../components/Hero/Hero";
 import Testimonials from "../../components/Testimonials/Testimonials";
@@ -11,6 +12,7 @@ const Home = () => {
             <FeaturedBikes/>
             <Testimonials/>
             <WhyChooseUs/>
+            <ContactUs/>
         </div>
     );
 };
