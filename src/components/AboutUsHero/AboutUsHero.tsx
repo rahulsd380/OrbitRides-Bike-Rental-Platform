@@ -3,7 +3,7 @@ import bgImg from "../../assets/Images/1.png";
 
 const AboutUsHero = () => {
     return (
-        <div className="relative bg-gradient-to-r from-teal-50 to-indigo-50 ">
+        <div className="relative bg-gradient-to-r from-teal-50 to-indigo-50 mt-5">
             <div
         className="absolute inset-0 bg-no-repeat bg-cover"
         style={{ backgroundImage: `url(${bgImg})` }}

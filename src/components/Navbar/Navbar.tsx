@@ -24,8 +24,12 @@ const Navbar = () => {
       path: "contact-us",
     },
     {
-      label: "Blogs ",
+      label: "Blogs",
       path: "blogs",
+    },
+    {
+      label: "Dashboard",
+      path: "dashboard",
     },
   ];
   const user = false;

@@ -5,6 +5,10 @@ import Home from "../pages/Home/Home";
 import AboutUs from "../pages/AboutUs/AboutUs";
 import Signup from "../pages/Signup/Signup";
 import Login from "../pages/Login/Login";
+import DashboardLayout from "../layouts/DashboardLayout";
+import Dashboard from "../pages/Dashboard/Dashboard";
+import BikeListing from "../pages/BikeListing/BikeListing";
+import BikeDetails from "../pages/BikeDetails/BikeDetails";
 
 export const router = createBrowserRouter([
   {
@@ -30,23 +34,30 @@ export const router = createBrowserRouter([
       },
     ],
   },
-  // {
-  //   path: "/dashboard",
-  //   element: <DashboardLayout/>,
-  //   errorElement : <ErrorPage/>,
-  //   children : [
-  //     {
-  //         path: "",
-  //         element: <Dashboard/>
-  //     },
-  //     {
-  //         path: "add-product",
-  //         element: <AddProduct/>
-  //     },
-  //     {
-  //         path: "products",
-  //         element: <DashboardProducts/>
-  //     },
-  //   ]
-  // },
+
+  
+  {
+    path: "/dashboard",
+    element: <DashboardLayout/>,
+    errorElement : <ErrorPage/>,
+    children : [
+      {
+          path: "",
+          element: <Dashboard/>
+      },
+      {
+          path: "browse-bikes",
+          element: <BikeListing/>
+      },
+      {
+          path: "bike-details/:id",
+          element: <BikeDetails/>,
+          loader : ({params}) => fetch(`http://localhost:5000/api/bikes/${params.id}`)
+      },
+      // {
+      //     path: "products",
+      //     element: <DashboardProducts/>
+      // },
+    ]
+  },
 ]);

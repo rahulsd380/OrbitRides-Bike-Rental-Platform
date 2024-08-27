@@ -1,0 +1,115 @@
+import { useRef, useState } from "react";
+import search from "../../../assets/Icons/search.svg";
+import myProfile from "../../../assets/Icons/my-profile.svg";
+import editProfile from "../../../assets/Icons/edit-profile.svg";
+import inbox from "../../../assets/Icons/inbox.svg";
+import setting from "../../../assets/Icons/setting2.svg";
+import help from "../../../assets/Icons/help.svg";
+import logout from "../../../assets/Icons/logout.svg";
+import user from "../../../assets/Icons/user.svg";
+import downArrow from "../../../assets/Icons/down-arrow-dark.svg";
+
+const DashboardHeader = () => {
+    const [open, setOpen] = useState(false);
+    const dropDownRef = useRef<HTMLDivElement>(null);
+    const items = [
+      {
+        pathname: "My Profile",
+        link: "/dashboard/my-profile",
+        icon: myProfile,
+      },
+      {
+        pathname: "Edit Profile",
+        link: "/dashboard/my-profile",
+        icon: editProfile,
+      },
+      {
+        pathname: "Inbox",
+        link: "/dashboard/my-profile",
+        icon: inbox,
+      },
+      {
+        pathname: "Setting",
+        link: "/dashboard/my-profile",
+        icon: setting,
+      },
+      {
+        pathname: "Help",
+        link: "/dashboard/my-profile",
+        icon: help,
+      },
+    ];
+  return (
+    <div className="flex items-center justify-between w-full">
+      <div className="relative hidden xl:block">
+        <img
+          src={search}
+          alt=""
+          className="absolute size-6 right-[10px] top-2"
+        />
+        <input
+          placeholder="Find Bikes"
+          type="text"
+          className=" rounded-md bg-[#E9ECF2]/20 border border-[#364F53]/30 py-2 pl-2 pr-8 focus:border-[#85A98D] transition duration-300 focus:outline-none"
+        />
+      </div>
+
+      <div ref={dropDownRef} className="relative w-fit">
+          <div
+            onClick={() => setOpen((prev) => !prev)}
+            className="flex items-center gap-4 cursor-pointer"
+          >
+            <div className="size-10 rounded-full bg-dark-5/40 border border-dark-10/30 flex justify-center items-center">
+              <img src={user} alt="" className="size-8" />
+            </div>
+            <div className="hidden md:flex items-center gap-2">
+              <div>
+                <p className="text-neutral-60 font-semibold ">
+                  Rahul Sutradhar
+                </p>
+                <p className="text-neutral-60/80 font-semibold text-xs">
+                  Manager
+                </p>
+              </div>
+
+              <img src={downArrow} alt="" className="size-6" />
+            </div>
+          </div>
+          <ul
+            className={`${
+              open
+                ? "visible translate-y-0 duration-300"
+                : "invisible translate-y-4"
+            } absolute top-16 z-50 w-full  bg-white shadow rounded-b-lg py-2`}
+          >
+            {items.map((item, idx) => (
+              <li
+                key={idx}
+                className={` px-4 py-2 ${
+                  open ? "opacity-100 duration-300" : "opacity-0"
+                } hover:text-primary-10 cursor-pointer text-body-text`}
+              >
+                <div className="flex items-center gap-2">
+                  <img src={item.icon} alt="" className="size-5" />
+                  {item.pathname}
+                </div>
+              </li>
+            ))}
+
+            <li
+              className={` px-4 py-2 ${
+                open ? "opacity-100 duration-300" : "opacity-0"
+              } hover:text-primary-10 cursor-pointer text-body-text border-t border-neutral-55/20`}
+            >
+              <div className="flex items-center gap-2">
+                <img src={logout} alt="" className="size-5" />
+                Log Out
+              </div>
+            </li>
+          </ul>
+        </div>
+    </div>
+  );
+};
+
+export default DashboardHeader;

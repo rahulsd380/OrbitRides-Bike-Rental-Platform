@@ -30,7 +30,7 @@ const OurMission = () => {
       
     return (
         <div className='font-SpaceGrotesk max-w-[1300px] mx-auto mt-20'>
-            <div className="flex gap-16">
+            <div className="flex items-center gap-16">
 
             <div className="flex flex-col gap-7 w-1/2">
                 <div>
