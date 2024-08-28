@@ -3,7 +3,7 @@ import Button from "../../components/Button/Button";
 import { TBike } from "./bike.types";
 
 const BikeCard: React.FC<TBike> = ({
-  _id, name, description, pricePerHour, isAvailable, cc, year, model, brand
+  _id, name, description, brand
 }) => {
   // const { bikeName, img, brand, description, price, cc, year, availability } = bike;
   const descriptionWords = description.split(" ");

@@ -1,12 +1,17 @@
 import { useState } from "react";
 import Button from "../../components/Button/Button";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { TBike } from "../BikeListing/bike.types";
+import Modal1 from "../../components/Modal1";
+import cross from "../../assets/Icons/cross.svg";
+import { useForm } from "react-hook-form";
 
 const BikeDetails = () => {
   const allBikes = useLoaderData();
-  console.log(allBikes);
+//   Tab for description & reviews
   const [tab, setTab] = useState("Description");
+
+  const [openModal1, setOpenModal1] = useState(false);
 
   const {
     brand,
@@ -17,7 +22,15 @@ const BikeDetails = () => {
     name,
     pricePerHour,
     year,
-  } = allBikes?.data as TBike;
+  } = allBikes?.data as TBike || {};
+
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
 
   if (!allBikes) {
     return <div>Loading...</div>;
@@ -25,6 +38,7 @@ const BikeDetails = () => {
 
   return (
     <div className="font-SpaceGrotesk mt-10 flex flex-col gap-10">
+
       <div className="flex gap-10 bg-white p-5 rounded-xl shadow-md">
         <div className="size-[400px] rounded-xl p-4 bg-gray-200 flex items-center justify-center">
           <img src={"https://i.ibb.co/nw7jTVy/pngwing-com-11.pngs"} alt="" />
@@ -75,7 +89,7 @@ const BikeDetails = () => {
           </div>
 
           <div className="flex items-center gap-5 mt-6">
-            <Button variant="primary">Book Now</Button>
+            <Button onClick={() => setOpenModal1(true)} variant="primary">Book Now</Button>
             <Button variant="secondary">Add To Wishlist</Button>
           </div>
         </div>
@@ -90,7 +104,7 @@ const BikeDetails = () => {
               tab === "Description"
                 ? "text-[#85A98D] font-bold"
                 : "text-[#364F53] font-medium"
-            } text-lg cursor-pointer`}
+            } cursor-pointer`}
           >
             Description
           </p>
@@ -100,7 +114,7 @@ const BikeDetails = () => {
               tab === "Reviews"
                 ? "text-[#85A98D] font-bold"
                 : "text-[#364F53] font-medium"
-            } text-lg cursor-pointer`}
+            } cursor-pointer`}
           >
             Reviews
           </p>
@@ -123,6 +137,52 @@ const BikeDetails = () => {
           </div>
         )}
       </div>
+  
+
+      <Modal1
+        openModal1={openModal1}
+        setOpenModal1={setOpenModal1}
+        classNames={"w-[400px] p-4"} >
+
+<div className="flex items-center justify-between border-b border-gray-300 pb-2 mb-5">
+          <h1 className="text-lg font-medium text-gray-60">
+            Select Your Starting Time
+          </h1>
+
+          <img
+            onClick={() => setOpenModal1(false)}
+            src={cross}
+            alt=""
+            className="size-7 cursor-pointer"
+          />
+        </div>
+
+
+       <form className="flex flex-col gap-4">
+         {/* Start Time */}
+         <div className="flex flex-col gap-1 w-full">
+            <p className="text-body-text font-medium text-sm">Start Time</p>
+            <input
+              {...register("startTime", { required: "startTime is required" })}
+              type="time"
+              id="startTime"
+              className="bg-[#E9ECF2]/20  border border-[#364F53]/30 p-2 focus:border-[#85A98D] transition duration-300 focus:outline-none rounded w-full"
+              placeholder="Enter your full startTime"
+            />
+            {errors.startTime && (
+              <span className="text-warning-10 text-start">
+                {errors.startTime.message as string}
+              </span>
+            )}
+          </div>
+
+          <Link to={`/dashboard/payment`}>
+          <Button variant="primary">Pay</Button>
+          </Link>
+       </form>
+
+
+        </Modal1>
     </div>
   );
 };

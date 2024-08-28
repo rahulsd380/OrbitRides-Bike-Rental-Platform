@@ -22,12 +22,17 @@ const DashboardSidebar = () => {
         },
         {
             label : "My Rentals",
-            path : "my-rentals",
+            path : "dashboard/my-rentals",
             icon : icon
         },
         {
             label : "Profile",
             path : "profile",
+            icon : icon
+        },
+        {
+            label : "Manage Bikes",
+            path : "dashboard/manage-bikes",
             icon : icon
         },
     ]

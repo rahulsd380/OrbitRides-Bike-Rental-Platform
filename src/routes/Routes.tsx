@@ -9,6 +9,9 @@ import DashboardLayout from "../layouts/DashboardLayout";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import BikeListing from "../pages/BikeListing/BikeListing";
 import BikeDetails from "../pages/BikeDetails/BikeDetails";
+import Payment from "../pages/Payment/Payment";
+import MyRentals from "../pages/MyRentals/MyRentals";
+import ManageBikes from "../pages/DashboardPages/Admin/ManageBikes/ManageBikes";
 
 export const router = createBrowserRouter([
   {
@@ -54,10 +57,18 @@ export const router = createBrowserRouter([
           element: <BikeDetails/>,
           loader : ({params}) => fetch(`http://localhost:5000/api/bikes/${params.id}`)
       },
-      // {
-      //     path: "products",
-      //     element: <DashboardProducts/>
-      // },
+      {
+          path: "payment",
+          element: <Payment/>
+      },
+      {
+          path: "my-rentals",
+          element: <MyRentals/>
+      },
+      {
+          path: "manage-bikes",
+          element: <ManageBikes/>
+      },
     ]
   },
 ]);

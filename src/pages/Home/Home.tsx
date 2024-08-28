@@ -9,7 +9,7 @@ import WhyChooseUs from "../../components/WhyChooseUs/WhyChooseUs";
 const Home = () => {
     return (
         <div>
-            {/* <TAble/> */}
+            <TAble/>
             <Hero/>
             <FeaturedBikes/>
             <Testimonials/>
