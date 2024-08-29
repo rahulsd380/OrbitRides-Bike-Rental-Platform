@@ -35,6 +35,16 @@ const DashboardSidebar = () => {
             path : "dashboard/manage-bikes",
             icon : icon
         },
+        {
+            label : "Manage Users",
+            path : "dashboard/manage-users",
+            icon : icon
+        },
+        {
+            label : "Return Bike",
+            path : "dashboard/return-bike",
+            icon : icon
+        },
     ]
     return (
         <div className="w-[300px] bg-[#2f3d46] h-screen sticky top-0 left-0 font-SpaceGrotesk">

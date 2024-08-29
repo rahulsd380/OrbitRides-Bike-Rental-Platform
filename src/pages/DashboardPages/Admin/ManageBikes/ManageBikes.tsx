@@ -4,8 +4,11 @@ import Modal1 from "../../../../components/Modal1";
 import ManageBikeCard from "./ManageBikeCard";
 import { useState } from "react";
 import cross from "../../../../assets/Icons/cross.svg";
+import { useGetAllBikesQuery } from "../../../../redux/Features/Bikes/bikeApi";
+import { TBike } from "../../../BikeListing/bike.types";
 
 const ManageBikes = () => {
+  const {data} = useGetAllBikesQuery({});
   const {
     register,
     handleSubmit,
@@ -14,22 +17,33 @@ const ManageBikes = () => {
 
   const [openModal1, setOpenModal1] = useState(false);
 
-  const handleAddNewBike = (data) => {
+  const handleAddNewBike = (data) => {};
 
-  }
 
   return (
     <div className="font-SpaceGrotesk">
-      <h1 className="text-3xl font-bold text-[#364F53]">Manage All Bikes</h1>
+      <div className="flex items-center justify-between">
+        <h1 className="text-3xl font-bold text-[#364F53]">Manage All Bikes</h1>
 
-      <Button onClick={() => setOpenModal1(true)} variant="primary">
-        Add New Bike
-      </Button>
+        <div>
+          <Button onClick={() => setOpenModal1(true)} variant="primary">
+            Add New Bike
+          </Button>
+        </div>
 
-      <div className="grid grid-cols-3 gap-10 mt-5">
-        <ManageBikeCard />
       </div>
 
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 mt-7">
+        {data?.data.map((bike : TBike) => (
+          <ManageBikeCard key={bike?._id} {...bike}/>
+        ))}
+      </div>
+
+      <div className="grid grid-cols-3 gap-10 mt-5">
+        
+      </div>
+
+      {/* Add bike modal */}
       <Modal1
         openModal1={openModal1}
         setOpenModal1={setOpenModal1}
@@ -48,8 +62,10 @@ const ManageBikes = () => {
           />
         </div>
 
-        <form onSubmit={handleSubmit(handleAddNewBike)} className="flex flex-col gap-4">
-            
+        <form
+          onSubmit={handleSubmit(handleAddNewBike)}
+          className="flex flex-col gap-4"
+        >
           {/* Name */}
           <div className="flex flex-col gap-1 w-full">
             <p className="text-body-text font-medium text-sm">Name</p>
@@ -153,10 +169,14 @@ const ManageBikes = () => {
           </div>
 
           <button type="submit" className="w-full">
-          <Button variant="primary" classNames="w-full">Submit</Button>
+            <Button variant="primary" classNames="w-full">
+              Submit
+            </Button>
           </button>
         </form>
       </Modal1>
+
+
     </div>
   );
 };

@@ -4,7 +4,7 @@ import { twMerge } from "tailwind-merge";
 type ButtonProps = {
   children: ReactNode;
   classNames? : string;
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "warning";
   
 };
 

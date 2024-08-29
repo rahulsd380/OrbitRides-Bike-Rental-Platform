@@ -12,6 +12,8 @@ import BikeDetails from "../pages/BikeDetails/BikeDetails";
 import Payment from "../pages/Payment/Payment";
 import MyRentals from "../pages/MyRentals/MyRentals";
 import ManageBikes from "../pages/DashboardPages/Admin/ManageBikes/ManageBikes";
+import ManageUsers from "../pages/DashboardPages/Admin/ManageUsers/ManageUsers";
+import ReturnBike from "../pages/DashboardPages/Admin/ReturnBike/ReturnBike";
 
 export const router = createBrowserRouter([
   {
@@ -68,6 +70,14 @@ export const router = createBrowserRouter([
       {
           path: "manage-bikes",
           element: <ManageBikes/>
+      },
+      {
+          path: "manage-users",
+          element: <ManageUsers/>
+      },
+      {
+          path: "return-bike",
+          element: <ReturnBike/>
       },
     ]
   },
