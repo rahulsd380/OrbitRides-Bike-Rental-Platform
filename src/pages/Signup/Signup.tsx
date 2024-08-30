@@ -4,10 +4,11 @@ import eyeOpen from "../../assets/Icons/eye-open.svg";
 import eyeClosed from "../../assets/Icons/eye-closed.svg";
 import Button from "../../components/Button/Button";
 import logo from "../../assets/Images/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import HamburgerMenu from "../../components/Navbar/HamburgerMenu";
 import Lottie from "lottie-react";
 import signupAnimation from "../../assets/signup-animation.json"
+import { useSignupMutation } from "../../redux/Features/Auth/authApi";
 
 type TSignupData = {
   name: string;
@@ -18,16 +19,41 @@ type TSignupData = {
 };
 
 const Signup = () => {
+
+  const [signup, {isLoading : isSigningUp}] = useSignupMutation();
+  
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<TSignupData>();
 
-  const handleSignup = (data: TSignupData) => {
-    console.log(data);
+  const handleSignup = async (data: TSignupData) => {
+    const signupData = {
+      name: data.name,
+      email: data.email,
+      address: data.address,
+      phone: data.phone,
+      password: data.password,
+    };
+
+    try{
+      const response = await signup(signupData).unwrap();
+      console.log(response);
+    if(response.success) {
+      console.log("Signup successful");
+      navigate("/dashboard");
+    }
+    }catch(err){
+      console.log(err)
+      return;
+    }
+    
   };
+
+
   return (
     <div className="font-SpaceGrotesk flex flex-col lg:flex-row gap-20">
       <div className="w-full lg:w-[50%] bg-gradient-to-r from-teal-600 to-teal-800 rounded-tr-none lg:rounded-tr-[80px] p-6 h-full xl:h-screen">
@@ -200,7 +226,11 @@ const Signup = () => {
             </label>
           </div>
 
-          <Button variant="primary">Sign Up</Button>
+          <Button variant="primary">
+            {
+              isSigningUp ? "Signing Up" : "Sign Up"
+            }
+          </Button>
         </form>
         </div>
       </div>

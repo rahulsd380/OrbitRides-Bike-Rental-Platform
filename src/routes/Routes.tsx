@@ -14,6 +14,8 @@ import MyRentals from "../pages/MyRentals/MyRentals";
 import ManageBikes from "../pages/DashboardPages/Admin/ManageBikes/ManageBikes";
 import ManageUsers from "../pages/DashboardPages/Admin/ManageUsers/ManageUsers";
 import ReturnBike from "../pages/DashboardPages/Admin/ReturnBike/ReturnBike";
+import ManageCoupons from "../pages/DashboardPages/Admin/ManageCoupons/ManageCoupons";
+import Profile from "../pages/DashboardPages/Profile/Profile";
 
 export const router = createBrowserRouter([
   {
@@ -78,6 +80,14 @@ export const router = createBrowserRouter([
       {
           path: "return-bike",
           element: <ReturnBike/>
+      },
+      {
+          path: "manage-coupons",
+          element: <ManageCoupons/>
+      },
+      {
+          path: "my-profile",
+          element: <Profile/>
       },
     ]
   },

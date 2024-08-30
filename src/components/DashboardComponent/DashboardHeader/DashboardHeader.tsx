@@ -5,12 +5,17 @@ import editProfile from "../../../assets/Icons/edit-profile.svg";
 import inbox from "../../../assets/Icons/inbox.svg";
 import setting from "../../../assets/Icons/setting2.svg";
 import help from "../../../assets/Icons/help.svg";
-import logout from "../../../assets/Icons/logout.svg";
+import logoutIcon from "../../../assets/Icons/logout.svg";
 import user from "../../../assets/Icons/user.svg";
 import downArrow from "../../../assets/Icons/down-arrow-dark.svg";
+import { useAppDispatch } from "../../../redux/hooks";
+import { logout } from "../../../redux/Features/Auth/authSlice";
+import { useNavigate } from "react-router-dom";
 
 const DashboardHeader = () => {
+  const dispatch = useAppDispatch();
     const [open, setOpen] = useState(false);
+    const navigate = useNavigate();
     const dropDownRef = useRef<HTMLDivElement>(null);
     const items = [
       {
@@ -39,8 +44,13 @@ const DashboardHeader = () => {
         icon: help,
       },
     ];
+
+    const handleLogout = () => {
+      dispatch(logout());
+      navigate('/login')
+    }
   return (
-    <div className="flex items-center justify-between w-full">
+    <div className="flex items-center justify-between w-full border-b border-[#DCDFE5] pb-3">
       <div className="relative hidden xl:block">
         <img
           src={search}
@@ -101,8 +111,8 @@ const DashboardHeader = () => {
                 open ? "opacity-100 duration-300" : "opacity-0"
               } hover:text-primary-10 cursor-pointer text-body-text border-t border-neutral-55/20`}
             >
-              <div className="flex items-center gap-2">
-                <img src={logout} alt="" className="size-5" />
+              <div onClick={handleLogout} className="flex items-center gap-2">
+                <img src={logoutIcon} alt="" className="size-5" />
                 Log Out
               </div>
             </li>

@@ -1,7 +1,27 @@
+import { useState } from "react";
 import Button from "../../../../components/Button/Button";
+import { useDeleteUserMutation } from "../../../../redux/Features/Users/usersApi";
 import { TUser } from "./user.types";
 
 const UserTable = ({ users }: { users: TUser }) => {
+
+  const [selectedUserID, setSelectedUserID] = useState<string>("")
+
+  const [deleteUser, {isLoading : isDeleting}] = useDeleteUserMutation();
+
+  const handleDeleteUser = async () => {
+    const userId = selectedUserID;
+    console.log(userId);
+    try {
+      const res = await deleteUser(userId).unwrap();
+      console.log(res);
+      if(res.success){
+        console.log("Success");
+      }
+  } catch (err) {
+      console.log(err);
+  }
+  }
   return (
     <div className="w-full">
       <div className="overflow-x-auto font-Roboto w-full">
@@ -45,8 +65,13 @@ const UserTable = ({ users }: { users: TUser }) => {
 
                 <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                   <div className="flex items-center gap-5 mt-4">
-                    <Button variant="warning" classNames="bg-rose-500">
-                      Delete
+                    <Button onClick={() => {
+                      setSelectedUserID(user?._id);
+                      handleDeleteUser();
+                    }} variant="warning" classNames="bg-rose-500">
+                      {
+                        isDeleting ? "Deleting..." : "Delete"
+                      }
                     </Button>
                     <Button variant="secondary">Make Admin</Button>
                   </div>

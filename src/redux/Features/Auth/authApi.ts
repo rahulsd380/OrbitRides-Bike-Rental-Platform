@@ -13,7 +13,7 @@ const authApi = baseApi.injectEndpoints({
     signup: builder.mutation({
       query: (userInfo) => ({
         method: "POST",
-        url: "/user/signup",
+        url: "/auth/signup",
         body: userInfo,
       }),
       // invalidatesTags : ["products"]
@@ -22,21 +22,22 @@ const authApi = baseApi.injectEndpoints({
     getMe: builder.query({
       query: () => ({
         method: "GET",
-        url: "/user/me",
+        url: "/users/me",
       }),
       // invalidatesTags : ["products"]
     }),
 
-    deleteAccount: builder.mutation({
-      query: ({userId, data}) => ({
+    updateProfile: builder.mutation({
+      query: (profileUpdatedData) => ({
         method: "PUT",
-        url: `/user/${userId}`,
-        body : data,
+        url: `/users/me`,
+        body: profileUpdatedData,
       }),
-      // invalidatesTags : ["products"]
+      invalidatesTags: ["users"]
     }),
+    
 
   }),
 });
 
-export const { useLoginMutation, useSignupMutation, useGetMeQuery, useDeleteAccountMutation } = authApi;
+export const { useLoginMutation, useSignupMutation, useGetMeQuery, useUpdateProfileMutation } = authApi;

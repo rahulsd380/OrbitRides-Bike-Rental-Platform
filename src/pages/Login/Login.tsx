@@ -6,10 +6,14 @@ import google from "../../assets/Icons/google.svg";
 import facebook from "../../assets/Icons/facebook.svg";
 import Button from "../../components/Button/Button";
 import logo from "../../assets/Images/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import HamburgerMenu from "../../components/Navbar/HamburgerMenu";
 import Lottie from "lottie-react";
 import signupAnimation from "../../assets/signup-animation.json";
+import { useAppDispatch } from "../../redux/hooks";
+import { setUser } from "../../redux/Features/Auth/authSlice";
+import { useLoginMutation } from "../../redux/Features/Auth/authApi";
+import { verifyToken } from "../../utils/verifyToken";
 
 type TLoginData = {
   email: string;
@@ -17,16 +21,35 @@ type TLoginData = {
 };
 
 const Login = () => {
+  const [login, {isLoading : isLoginIn}] = useLoginMutation();
+
+  const dispatch = useAppDispatch();
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<TLoginData>();
 
-  const handleLogin = (data: TLoginData) => {
-    console.log(data);
+  const handleLogin = async (data: TLoginData) => {
+    const loginData = {
+      email: data.email,
+      password: data.password,
+    };
+
+    try{
+      const response = await login(loginData).unwrap();
+    const user = verifyToken(response.data?.accessToken);
+    dispatch(setUser({ user, token: response.data.accessToken }));
+    console.log("Logged in successfully.");
+    navigate("/dashboard");
+    }catch(err){
+      console.log(err)
+    }
   };
+
+
   return (
     <div className="font-SpaceGrotesk flex flex-col lg:flex-row gap-20">
       <div className="w-full lg:w-[50%] bg-gradient-to-r from-teal-600 to-teal-800 rounded-tr-none lg:rounded-tr-[80px] p-6 h-full xl:h-screen">
@@ -151,7 +174,11 @@ const Login = () => {
               </p>
             </div>
 
-            <Button variant="primary">Login</Button>
+            <Button variant="primary">
+              {
+                isLoginIn ? "Login In" : "Login"
+              }
+            </Button>
             <Button
               variant="secondary"
               classNames="flex items-center gap-3 justify-center"

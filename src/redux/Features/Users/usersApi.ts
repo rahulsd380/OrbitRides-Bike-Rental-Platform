@@ -3,22 +3,22 @@ import { baseApi } from "../../API/baseApi";
 const usersApi = baseApi.injectEndpoints({
     // tagTypes: ["blogs"],
     endpoints : (builder) => ({
-        // createBlog: builder.mutation({
-        //     query : (data) => ({
-        //         url : '/blogs/create-blog',
-        //         method : "POST",
-        //         body : data
-        //     }),
-        //     // invalidatesTags : ["blogs"]
-        // }),
+        deleteUser: builder.mutation({
+            query : (userId) => ({
+                url : `/users/delete-user/${userId}`,
+                method : "DELETE",
+            }),
+            invalidatesTags : ["users"]
+        }),
 
         getAllUsers: builder.query({
             query : () => ({
                 url : '/users',
                 method : "GET",
-            })
+            }),
+            providesTags : ["users"]
         }),
     })
 })
 
-export const { useGetAllUsersQuery } = usersApi;
+export const { useGetAllUsersQuery, useDeleteUserMutation } = usersApi;
