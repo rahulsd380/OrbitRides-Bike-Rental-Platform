@@ -30,7 +30,7 @@ const baseQueryWithRefreshToken: BaseQueryFn<FetchArgs, BaseQueryApi, Definition
     api.dispatch(
       setUser({
         user,
-        token : data.data.accessToken
+        token : data?.data?.accessToken
       })
     )
   }

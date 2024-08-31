@@ -18,7 +18,23 @@ const usersApi = baseApi.injectEndpoints({
             }),
             providesTags : ["users"]
         }),
+
+        changeUserRoleToAdmin: builder.mutation({
+            query: (userId) => ({
+              url: `/users/change-role/${userId}`,
+              method: 'PUT',
+            }),
+            invalidatesTags : ["users"]
+          }),
+
+        changeUserRoleToUser: builder.mutation({
+            query: (userId) => ({
+              url: `/users/make-user/${userId}`,
+              method: 'PUT',
+            }),
+            invalidatesTags : ["users"]
+          }),
     })
 })
 
-export const { useGetAllUsersQuery, useDeleteUserMutation } = usersApi;
+export const { useGetAllUsersQuery, useDeleteUserMutation, useChangeUserRoleToAdminMutation, useChangeUserRoleToUserMutation } = usersApi;
