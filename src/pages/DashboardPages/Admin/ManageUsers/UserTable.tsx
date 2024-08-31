@@ -3,6 +3,9 @@ import Button from "../../../../components/Button/Button";
 import { useChangeUserRoleToAdminMutation, useChangeUserRoleToUserMutation, useDeleteUserMutation } from "../../../../redux/Features/Users/usersApi";
 import { TUser } from "./user.types";
 import deleteIcon from "../../../../assets/Icons/delete.svg";
+import { CustomToast } from "../../../../components/ToastMessage/ToastMessage";
+import successIcon from "../../../../assets/Icons/successIcon.svg"
+import errorIcon from "../../../../assets/Icons/error.svg"
 
 const UserTable = ({ users }: { users: TUser }) => {
 
@@ -10,15 +13,22 @@ const UserTable = ({ users }: { users: TUser }) => {
   const [changeUserRoleToAdmin, {isLoading : isUpdating}] = useChangeUserRoleToAdminMutation();
   const [changeUserRoleToUser, {isLoading : isUpdatingUser}] = useChangeUserRoleToUserMutation();
 
-  const handleDeleteUser = async (userId) => {
+  const handleDeleteUser = async (userId:string) => {
     console.log(userId);
     try {
       const res = await deleteUser(userId).unwrap();
       if(res.success){
-        console.log("Success");
+        CustomToast({
+          title: "User deleted successfully!",
+          message: "Explore new bikes",
+          icon: successIcon,
+        });
       }
   } catch (err) {
-      console.log(err);
+    CustomToast({
+      title: "Couldn't delete user.",
+      icon: errorIcon,
+    });
   }
   }
 

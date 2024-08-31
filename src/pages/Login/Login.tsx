@@ -14,6 +14,9 @@ import { useAppDispatch } from "../../redux/hooks";
 import { setUser } from "../../redux/Features/Auth/authSlice";
 import { useLoginMutation } from "../../redux/Features/Auth/authApi";
 import { verifyToken } from "../../utils/verifyToken";
+import { CustomToast } from "../../components/ToastMessage/ToastMessage";
+import successIcon from "../../assets/Icons/successIcon.svg"
+import errorIcon from "../../assets/Icons/error.svg"
 
 type TLoginData = {
   email: string;
@@ -42,10 +45,17 @@ const Login = () => {
       const response = await login(loginData).unwrap();
     const user = verifyToken(response.data?.accessToken);
     dispatch(setUser({ user, token: response.data.accessToken }));
-    console.log("Logged in successfully.");
+    CustomToast({
+      title: "Welcome back!!",
+      message: "Explore new bikes",
+      icon: successIcon,
+    });
     navigate("/dashboard");
     }catch(err){
-      console.log(err)
+      CustomToast({
+        title: "Invalid email or password",
+        icon: errorIcon,
+      });
     }
   };
 

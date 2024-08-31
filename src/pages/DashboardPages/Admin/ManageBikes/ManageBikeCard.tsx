@@ -4,10 +4,15 @@ import Modal1 from "../../../../components/Modal1";
 import { useForm } from "react-hook-form";
 import cross from "../../../../assets/Icons/cross.svg";
 import { TBike } from "../../../BikeListing/bike.types";
+import { useDeleteBikeMutation, useUpdateBikeInfoMutation } from "../../../../redux/Features/Bikes/bikeApi";
+import { CustomToast } from "../../../../components/ToastMessage/ToastMessage";
+import successIcon from "../../../../assets/Icons/successIcon.svg"
 
 
-const ManageBikeCard:React.FC<TBike> = ({ _id, name, description, brand, pricePerHour, year, cc, model}) => {
+const ManageBikeCard:React.FC<TBike> = ({ _id, name,image, description, brand, pricePerHour, year, cc, model}) => {
 
+  const [deleteBike, {isLoading:isBikeDeleting}] = useDeleteBikeMutation();
+  const [updateBikeInfo, {isLoading:isUpdating}] = useUpdateBikeInfoMutation();
   const {
     register,
     handleSubmit,
@@ -17,7 +22,47 @@ const ManageBikeCard:React.FC<TBike> = ({ _id, name, description, brand, pricePe
   const [openUpdateModal, setOpenUpdateModal] = useState(false);
   const [openDeleteConfirmation, setOpenDeleteConfirmation] = useState(false);
 
-  const handleUpdateBike = (data :TBike) => {
+  const handleUpdateBike = async (data :TBike) => {
+    
+    
+    const bikeUpdatedData = {
+      name : data.name,
+      image : data.image,
+      pricePerHour : data.pricePerHour,
+      cc : data.cc,
+      year : data.year,
+      model : data.model,
+      brand : data.brand,
+      description : data.description,
+  };
+
+  console.log(_id, bikeUpdatedData);
+
+  try{
+      const response = await updateBikeInfo({id:_id, bikeUpdatedData}).unwrap();
+      console.log(response);
+    if(response.success) {
+      console.log("Updated successfully");
+    }
+    }catch(err){
+      console.log(err)
+      return;
+    }
+  };
+
+  const handleDeleteBike = async (data :TBike) => {
+    
+    try{
+      const res = await deleteBike(_id).unwrap();
+      setOpenDeleteConfirmation(false);
+      console.log(res);
+      CustomToast({
+        title: "Bike Deleted Successfully",
+        icon: successIcon,
+      });
+    }catch(err){
+      console.log(err);
+    }
     console.log(data);
   };
 
@@ -32,7 +77,7 @@ const ManageBikeCard:React.FC<TBike> = ({ _id, name, description, brand, pricePe
     return (
         <div className="bg-white p-4 rounded-xl font-SpaceGrotesk shadow-lg left-">
       <div className="bg-gray-200 p-3 rounded-t-xl">
-        <img src={"https://i.ibb.co/nw7jTVy/pngwing-com-11.png"} alt="" className="h-44" />
+        <img src={image} alt="" className="h-44" />
       </div>
       <div className="flex items-center justify-between mt-5">
         <h1 className="font-bold text-lg">{name}</h1>
@@ -70,8 +115,10 @@ const ManageBikeCard:React.FC<TBike> = ({ _id, name, description, brand, pricePe
             Cancel
           </Button>
 
-          <Button variant="warning">
-            Delete
+          <Button onClick={handleDeleteBike} variant="warning">
+            {
+              isBikeDeleting ? "Deleting..." : "Delete"
+            }
           </Button>
         </div>
         </Modal1>
@@ -102,7 +149,7 @@ const ManageBikeCard:React.FC<TBike> = ({ _id, name, description, brand, pricePe
         >
           {/* Name */}
           <div className="flex flex-col gap-1 w-full">
-            <p className="text-body-text font-medium text-sm">Name</p>
+            <p className="text-body-text font-medium text-sm">Bike Name</p>
             <input
               {...register("name", { required: "Name is required" })}
               defaultValue={name}
@@ -118,20 +165,38 @@ const ManageBikeCard:React.FC<TBike> = ({ _id, name, description, brand, pricePe
             )}
           </div>
 
+          {/* Image */}
+          <div className="flex flex-col gap-1 w-full">
+            <p className="text-body-text font-medium text-sm">Image</p>
+            <input
+              {...register("image", { required: "Image link is required" })}
+              defaultValue={image}
+              type="text"
+              id="image"
+              className="bg-[#E9ECF2]/20  border border-[#364F53]/30 p-2 focus:border-[#85A98D] transition duration-300 focus:outline-none rounded w-full"
+              placeholder="Enter the bike name"
+            />
+            {errors.image && (
+              <span className="text-rose-600 text-start">
+                {errors.image.message as string}
+              </span>
+            )}
+          </div>
+
           {/* Price */}
           <div className="flex flex-col gap-1 w-full">
             <p className="text-body-text font-medium text-sm">Price</p>
             <input
-              {...register("price", { required: "Price is required" })}
-              defaultValue={`৳ ${pricePerHour}`}
+              {...register("pricePerHour", { required: "Price is required" })}
+              defaultValue={`${pricePerHour}`}
               type="text"
-              id="price"
+              id="pricePerHour"
               className="bg-[#E9ECF2]/20  border border-[#364F53]/30 p-2 focus:border-[#85A98D] transition duration-300 focus:outline-none rounded w-full"
-              placeholder="Enter the bike Price"
+              placeholder="Enter the bike pricePerHour"
             />
-            {errors.price && (
+            {errors.pricePerHour && (
               <span className="text-rose-600 text-start">
-                {errors.price.message as string}
+                {errors.pricePerHour.message as string}
               </span>
             )}
           </div>
@@ -210,7 +275,9 @@ const ManageBikeCard:React.FC<TBike> = ({ _id, name, description, brand, pricePe
 
           <button type="submit" className="w-full">
             <Button variant="primary" classNames="w-full">
-              Update
+              {
+                isUpdating ? "Updating" : "Update"
+              }
             </Button>
           </button>
         </form>

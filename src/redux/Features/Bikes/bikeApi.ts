@@ -3,36 +3,32 @@ import { baseApi } from "../../API/baseApi";
 const bikeApi = baseApi.injectEndpoints({
     // tagTypes: ["blogs"],
     endpoints : (builder) => ({
-        // createBlog: builder.mutation({
-        //     query : (data) => ({
-        //         url : '/blogs/create-blog',
-        //         method : "POST",
-        //         body : data
-        //     }),
-        //     // invalidatesTags : ["blogs"]
-        // }),
-
+    
         getAllBikes: builder.query({
             query : () => ({
                 url : '/bikes',
                 method : "GET",
-            })
+            }),
+            providesTags : ["bikes"]
         }),
 
-        // getBlogById: builder.query({
-        //     query : (id) => ({
-        //         url : `/blogs/${id}`,
-        //         method : "GET",
-        //     })
-        // }),
+        deleteBike: builder.mutation({
+            query : (bikeId) => ({
+                url : `/bikes/${bikeId}`,
+                method : "DELETE",
+            }),
+            invalidatesTags : ["bikes"]
+        }),
 
-        // getBlogByCategory: builder.query({
-        //     query : (category) => ({
-        //         url : `/blogs/category/${category}`,
-        //         method : "GET",
-        //     })
-        // }),
+        updateBikeInfo: builder.mutation({
+            query: ({id, bikeUpdatedData}) => ({
+              method: "PUT",
+              url: `/bikes/${id}`,
+              body: bikeUpdatedData,
+            }),
+            invalidatesTags: ["bikes"]
+          }),
     })
 })
 
-export const { useGetAllBikesQuery } = bikeApi;
+export const { useGetAllBikesQuery, useDeleteBikeMutation, useUpdateBikeInfoMutation } = bikeApi;

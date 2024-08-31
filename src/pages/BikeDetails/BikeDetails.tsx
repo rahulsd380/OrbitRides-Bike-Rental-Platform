@@ -1,12 +1,15 @@
 import { useState } from "react";
 import Button from "../../components/Button/Button";
-import { Link, useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { TBike } from "../BikeListing/bike.types";
 import Modal1 from "../../components/Modal1";
 import cross from "../../assets/Icons/cross.svg";
 import { useForm } from "react-hook-form";
+import Payment from "../Payment/Payment";
 
 const BikeDetails = () => {
+  const [rentalData, setRentalData] = useState({});
+  const navigate = useNavigate();
   const allBikes = useLoaderData();
 //   Tab for description & reviews
   const [tab, setTab] = useState("Description");
@@ -14,6 +17,7 @@ const BikeDetails = () => {
   const [openModal1, setOpenModal1] = useState(false);
 
   const {
+    _id,
     brand,
     cc,
     description,
@@ -30,6 +34,15 @@ const BikeDetails = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  const handleSubmitRental =(data) => {
+    const rentalData = {
+      bikeId : _id,
+      startTime : data.startTime,
+    };
+    setRentalData(rentalData);
+    navigate('/dashboard/payment', { state: { rentalData, bikeData: allBikes?.data } });
+  }
 
 
   if (!allBikes) {
@@ -144,7 +157,7 @@ const BikeDetails = () => {
         setOpenModal1={setOpenModal1}
         classNames={"w-[400px] p-4"} >
 
-<div className="flex items-center justify-between border-b border-gray-300 pb-2 mb-5">
+        <div className="flex items-center justify-between border-b border-gray-300 pb-2 mb-5">
           <h1 className="text-lg font-medium text-gray-60">
             Select Your Starting Time
           </h1>
@@ -158,13 +171,13 @@ const BikeDetails = () => {
         </div>
 
 
-       <form className="flex flex-col gap-4">
+       <form onSubmit={handleSubmit(handleSubmitRental)} className="flex flex-col gap-4">
          {/* Start Time */}
          <div className="flex flex-col gap-1 w-full">
             <p className="text-body-text font-medium text-sm">Start Time</p>
             <input
               {...register("startTime", { required: "startTime is required" })}
-              type="time"
+              type="date"
               id="startTime"
               className="bg-[#E9ECF2]/20  border border-[#364F53]/30 p-2 focus:border-[#85A98D] transition duration-300 focus:outline-none rounded w-full"
               placeholder="Enter your full startTime"
@@ -176,13 +189,20 @@ const BikeDetails = () => {
             )}
           </div>
 
-          <Link to={`/dashboard/payment`}>
+          <button type="submit" className="w-fit">
+          
           <Button variant="primary">Pay</Button>
-          </Link>
+          </button>
+
+          
        </form>
 
 
         </Modal1>
+{/* 
+        <div className="hidden">
+            <Payment rentalData={rentalData} allBikes={allBikes}/>
+        </div> */}
     </div>
   );
 };

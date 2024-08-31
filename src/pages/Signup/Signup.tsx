@@ -9,6 +9,8 @@ import HamburgerMenu from "../../components/Navbar/HamburgerMenu";
 import Lottie from "lottie-react";
 import signupAnimation from "../../assets/signup-animation.json"
 import { useSignupMutation } from "../../redux/Features/Auth/authApi";
+import successIcon from "../../assets/Icons/successIcon.svg"
+import { CustomToast } from "../../components/ToastMessage/ToastMessage";
 
 type TSignupData = {
   name: string;
@@ -43,8 +45,14 @@ const Signup = () => {
       const response = await signup(signupData).unwrap();
       console.log(response);
     if(response.success) {
+      CustomToast({
+        title: "Welcoem to OrbitRides!!",
+        message: "Explore new bikes",
+        icon: successIcon,
+      });
+     
       console.log("Signup successful");
-      navigate("/dashboard");
+      navigate("/login");
     }
     }catch(err){
       console.log(err)

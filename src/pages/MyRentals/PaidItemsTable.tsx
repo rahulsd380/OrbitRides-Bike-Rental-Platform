@@ -1,20 +1,11 @@
+import { useGetMyRentalsQuery } from "../../redux/Features/Rentals/rentalsApi";
 
 
 const PaidItemsTable = () => {
-    const data = [
-        {
-            name : "Bike name",
-            startTime : "10:30",
-            returnTime : "12:30",
-            totalCost : "100"
-        },
-        {
-            name : "Bike name",
-            startTime : "10:30",
-            returnTime : "12:30",
-            totalCost : "100"
-        },
-    ]
+
+  const {data, isLoading} = useGetMyRentalsQuery({});
+
+  console.log(data?.data);
 
     return (
         <div className="w-full mt-5">
@@ -38,7 +29,7 @@ const PaidItemsTable = () => {
             </tr>
           </thead>
           <tbody>
-            {data.map((cartItem) => (
+            {data?.data?.map((cartItem) => (
               <tr>
                 
                 <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
@@ -48,7 +39,7 @@ const PaidItemsTable = () => {
                   {cartItem.startTime}
                 </td>
                 <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                  {cartItem.returnTime}
+                  {cartItem.returnTime ? cartItem.returnTime : "N/A"}
                 </td>
                 <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                 ৳ {cartItem.totalCost}

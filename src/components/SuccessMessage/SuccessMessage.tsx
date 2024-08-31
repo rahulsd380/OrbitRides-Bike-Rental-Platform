@@ -1,6 +1,7 @@
 import Confetti from "react-confetti";
 import success from "../../assets/Icons/success.svg";
 import Button from "../Button/Button";
+import { Link } from "react-router-dom";
 
 const SuccessMessage = () => {
   return (
@@ -21,7 +22,9 @@ const SuccessMessage = () => {
         </div>
 
         <Button variant="secondary">
-        My Rentals
+       <Link to={"/dashboard/my-rentals"}>
+       My Rentals
+       </Link>
         </Button>
       </div>
     </div>
