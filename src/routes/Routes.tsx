@@ -16,6 +16,7 @@ import ManageUsers from "../pages/DashboardPages/Admin/ManageUsers/ManageUsers";
 import ReturnBike from "../pages/DashboardPages/Admin/ReturnBike/ReturnBike";
 import ManageCoupons from "../pages/DashboardPages/Admin/ManageCoupons/ManageCoupons";
 import Profile from "../pages/DashboardPages/Profile/Profile";
+import ProtectedRoute from "../components/ProtectedRoute";
 
 export const router = createBrowserRouter([
   {
@@ -45,7 +46,7 @@ export const router = createBrowserRouter([
   
   {
     path: "/dashboard",
-    element: <DashboardLayout/>,
+    element: <ProtectedRoute><DashboardLayout/></ProtectedRoute>,
     errorElement : <ErrorPage/>,
     children : [
       {

@@ -44,8 +44,8 @@ const Footer = () => {
               path: "about-us",
             },
             {
-              label: "Courses",
-              path: "courses",
+              label: "Bikes",
+              path: "dashboard/browse-bikes",
             },
             {
               label: "Blogs",
@@ -61,8 +61,8 @@ const Footer = () => {
           title: "Important Links",
           items: [
             {
-              label: "My Courses",
-              path: "my-courses",
+              label: "My Rentals",
+              path: "dashboard/my-rentals",
             },
             {
               label: "Terms & Conditions",
@@ -79,23 +79,23 @@ const Footer = () => {
           ],
         },
         {
-          title: "Important Links",
+          title: "Quick Menus",
           items: [
             {
-              label: "My Courses",
-              path: "my-courses",
+              label: "Unpaid Bikes",
+              path: "dashboard/my-rentals",
             },
             {
-              label: "Terms & Conditions",
-              path: "terms-conditions",
+              label: "Paid Bikes",
+              path: "dashboard/my-rentals",
             },
             {
-              label: "Privacy Policy",
-              path: "privacy-policy",
+              label: "Edit Profile",
+              path: "dashboard/my-profile",
             },
             {
-              label: "Returns & Exchanges",
-              path: "returns-exchanges",
+              label: "Login",
+              path: "login",
             },
           ],
         },
