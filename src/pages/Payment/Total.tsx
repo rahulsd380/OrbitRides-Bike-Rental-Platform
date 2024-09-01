@@ -47,7 +47,7 @@ const Total = ({ rentalData, bikeData }) => {
     } catch (err) {
       console.error('Rental Error:', err);
       CustomToast({
-        title: "Couldn't rent the bike!! Please try again.",
+        title: "Couldn't rent the bike!! Please try another.",
         icon: errorIcon,
       });
     }

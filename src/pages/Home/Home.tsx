@@ -1,7 +1,7 @@
 import ContactUs from "../../components/ContactUs/ContactUs";
 import FeaturedBikes from "../../components/FeaturedBikes/FeaturedBikes";
 import Hero from "../../components/Hero/Hero";
-import TAble from "../../components/TAble";
+// import TAble from "../../components/TAble";
 import Testimonials from "../../components/Testimonials/Testimonials";
 import WhyChooseUs from "../../components/WhyChooseUs/WhyChooseUs";
 
@@ -9,7 +9,7 @@ import WhyChooseUs from "../../components/WhyChooseUs/WhyChooseUs";
 const Home = () => {
     return (
         <div>
-            <TAble/>
+            {/* <TAble/> */}
             <Hero/>
             <FeaturedBikes/>
             <Testimonials/>

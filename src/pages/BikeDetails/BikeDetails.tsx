@@ -5,10 +5,9 @@ import { TBike } from "../BikeListing/bike.types";
 import Modal1 from "../../components/Modal1";
 import cross from "../../assets/Icons/cross.svg";
 import { useForm } from "react-hook-form";
-import Payment from "../Payment/Payment";
 
 const BikeDetails = () => {
-  const [rentalData, setRentalData] = useState({});
+
   const navigate = useNavigate();
   const allBikes = useLoaderData();
 //   Tab for description & reviews
@@ -40,7 +39,6 @@ const BikeDetails = () => {
       bikeId : _id,
       startTime : data.startTime,
     };
-    setRentalData(rentalData);
     navigate('/dashboard/payment', { state: { rentalData, bikeData: allBikes?.data } });
   }
 

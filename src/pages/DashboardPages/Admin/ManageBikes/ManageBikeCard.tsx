@@ -8,6 +8,16 @@ import { useDeleteBikeMutation, useUpdateBikeInfoMutation } from "../../../../re
 import { CustomToast } from "../../../../components/ToastMessage/ToastMessage";
 import successIcon from "../../../../assets/Icons/successIcon.svg"
 
+type BikeData = {
+  name: string;
+  image: string;
+  pricePerHour: number;
+  cc: number;
+  year: number;
+  model: string;
+  brand: string;
+  description: string;
+};
 
 const ManageBikeCard:React.FC<TBike> = ({ _id, name,image, description, brand, pricePerHour, year, cc, model}) => {
 
@@ -17,12 +27,12 @@ const ManageBikeCard:React.FC<TBike> = ({ _id, name,image, description, brand, p
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<BikeData>();
 
   const [openUpdateModal, setOpenUpdateModal] = useState(false);
   const [openDeleteConfirmation, setOpenDeleteConfirmation] = useState(false);
 
-  const handleUpdateBike = async (data :TBike) => {
+  const handleUpdateBike = async (data :BikeData) => {
     
     
     const bikeUpdatedData = {

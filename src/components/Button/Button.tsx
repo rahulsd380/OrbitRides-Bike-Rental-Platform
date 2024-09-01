@@ -1,10 +1,11 @@
-import { ReactNode } from "react";
+import { ReactNode, MouseEvent } from "react";
 import { twMerge } from "tailwind-merge";
 
 type ButtonProps = {
   children: ReactNode;
   classNames? : string;
   variant?: "primary" | "secondary" | "warning";
+  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
   
 };
 
