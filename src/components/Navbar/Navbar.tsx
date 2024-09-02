@@ -4,8 +4,14 @@ import search from "../../assets/Icons/search.svg";
 import profileImg from "../../assets/Images/dumy-profile-img.avif";
 import Button from "../Button/Button";
 import HamburgerMenu from "./HamburgerMenu";
+import { selectCurrentUser } from "../../redux/Features/Auth/authSlice";
+import { useAppSelector } from "../../redux/hooks";
 
 const Navbar = () => {
+  const user = useAppSelector(selectCurrentUser);
+
+  console.log(user);
+
   const navlinks = [
     {
       label: "Home",
@@ -32,7 +38,6 @@ const Navbar = () => {
       path: "dashboard",
     },
   ];
-  const user = false;
   return (
     <div className="flex items-center justify-between max-w-[1300px] mx-auto mt-5 font-SpaceGrotesk px-4 md:px-7 xl:px-0">
       <div className="flex items-center gap-10">

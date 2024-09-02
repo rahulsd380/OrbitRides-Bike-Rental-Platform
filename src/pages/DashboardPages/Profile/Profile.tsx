@@ -4,6 +4,7 @@ import icon from "../../../assets/Icons/bikes.svg";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Button from "../../../components/Button/Button";
+import DashboardStatusHero from "../../../components/DashboardStatusHero/DashboardStatusHero";
 
 const Profile = () => {
     const [updateProfile, {isLoading:isProfileUpdating}] = useUpdateProfileMutation();
@@ -68,7 +69,9 @@ const Profile = () => {
   }
 
   return (
-    <div className="font-SpaceGrotesk flex gap-10">
+    <div>
+      <DashboardStatusHero/>
+      <div className="font-SpaceGrotesk flex gap-10 mt-10">
       {/* Left side */}
       <div className="bg-white p-4 rounded-xl w-[40%]">
         <div className="flex flex-col gap-4 items-center">
@@ -232,6 +235,7 @@ const Profile = () => {
 
 
       </div>
+    </div>
     </div>
   );
 };

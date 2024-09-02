@@ -10,11 +10,13 @@ const FeaturedBikesCard: React.FC<FeaturedBike> = ({ _id, image, brand }) => {
       </div>
       <h6 className="text-sm md:text-base lg:text-lg mb-3">{brand}</h6>
 
+      <Link to={`/dashboard/bike-details/${_id}`} className="">
       <button className="w-full px-5 py-2 rounded bg-[#2f3d46] text-white">
-        <Link to={`/${_id}`} className="">
+        
           View Details
-        </Link>
+        
       </button>
+      </Link>
     </div>
   );
 };

@@ -3,6 +3,8 @@ import Button from "../../../../components/Button/Button";
 import { TRental } from "./return.types";
 // import cross from "../../../../assets/Icons/cross.svg";
 import { useReturnBikeMutation } from "../../../../redux/Features/Rentals/rentalsApi";
+import { CustomToast } from "../../../../components/ToastMessage/ToastMessage";
+import successIcon from "../../../../assets/Icons/successIcon.svg"
 
 const ReturnDetailsTable = ({
   rentalsBikes = [],
@@ -22,7 +24,10 @@ const ReturnDetailsTable = ({
         const res = await returnBike(id).unwrap();
         console.log(res);
         if(res.success){
-          console.log("Success");
+          CustomToast({
+            title: "Bike returned successfully.",
+            icon: successIcon,
+          });
         }
     } catch (err) {
         console.log(err);

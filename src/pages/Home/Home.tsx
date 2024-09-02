@@ -1,4 +1,5 @@
 import ContactUs from "../../components/ContactUs/ContactUs";
+import Coupon from "../../components/Coupon/Coupon";
 import FeaturedBikes from "../../components/FeaturedBikes/FeaturedBikes";
 import Hero from "../../components/Hero/Hero";
 // import TAble from "../../components/TAble";
@@ -12,6 +13,7 @@ const Home = () => {
             {/* <TAble/> */}
             <Hero/>
             <FeaturedBikes/>
+            <Coupon/>
             <Testimonials/>
             <WhyChooseUs/>
             <ContactUs/>
