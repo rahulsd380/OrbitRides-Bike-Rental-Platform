@@ -17,6 +17,7 @@ import ReturnBike from "../pages/DashboardPages/Admin/ReturnBike/ReturnBike";
 import ManageCoupons from "../pages/DashboardPages/Admin/ManageCoupons/ManageCoupons";
 import Profile from "../pages/DashboardPages/Profile/Profile";
 import ProtectedRoute from "../components/ProtectedRoute";
+import ContactUsPage from "../pages/ContactUsPage/ContactUsPage";
 
 export const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
       {
           path: "/about-us",
           element: <AboutUs/>
+      },
+      {
+          path: "/contact-us",
+          element: <ContactUsPage/>
       },
     ],
   },

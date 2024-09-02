@@ -11,7 +11,7 @@ const DashboardStatusHero = () => {
   }
 
   return (
-    <div className="bg-dark-5/40 rounded-lg font-SpaceGrotesk shadow flex items-center justify-between p-5">
+    <div className="bg-dark-5/40 rounded-lg font-SpaceGrotesk shadow flex flex-col md:flex-row gap-7 md:gap-0 items-center justify-between p-5">
       <div className="max-w-[800px]">
         <h1 className="text-[#364F53] text-2xl font-bold">
           Good Morning,{" "}

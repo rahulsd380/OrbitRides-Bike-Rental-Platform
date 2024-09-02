@@ -23,7 +23,7 @@ const ManageBikes = () => {
   return (
     <div className="font-SpaceGrotesk">
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold text-[#364F53]">Manage All Bikes</h1>
+        <h1 className="text-xl md:text-3xl font-bold text-[#364F53]">Manage All Bikes</h1>
 
         <div>
           <Button onClick={() => setOpenModal1(true)} variant="primary">
@@ -33,7 +33,7 @@ const ManageBikes = () => {
 
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 mt-7">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7 mt-7">
         {data?.data.map((bike : TBike) => (
           <ManageBikeCard key={bike?._id} {...bike}/>
         ))}
@@ -47,7 +47,7 @@ const ManageBikes = () => {
       <Modal1
         openModal1={openModal1}
         setOpenModal1={setOpenModal1}
-        classNames={"w-[500px] h-[500px] p-4"}
+        classNames={"w-full max-w-[500px] h-[500px] p-4"}
       >
         <div className="flex items-center justify-between border-b border-gray-300 pb-2 mb-5">
           <h1 className="text-lg font-medium text-gray-60 capitalize">

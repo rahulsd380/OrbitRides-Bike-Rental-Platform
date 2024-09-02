@@ -8,7 +8,7 @@ import email from "../../assets/Icons/email.svg";
 
 const ContactUs = () => {
   return (
-    <div className="max-w-[1300px] mx-auto font-SpaceGrotesk mt-20">
+    <div className="max-w-[1300px] mx-auto font-SpaceGrotesk mt-20 p-7 xl:p-0">
       <h1 className="text-5xl font-bold text-center">
         Contact <span className="text-[#85A98D]">Us</span>
       </h1>

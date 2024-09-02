@@ -1,65 +1,18 @@
 import { Link, useLocation } from "react-router-dom";
 import logo from "../../../assets/Images/logo.png";
-import home from "../../../assets/Icons/home.svg";
-import dashboard from "../../../assets/Icons/dashboard.svg";
-import bikes from "../../../assets/Icons/bikes.svg";
-import myRentals from "../../../assets/Icons/my-rentals.svg";
-import profile from "../../../assets/Icons/profile.svg";
-import manageBikes from "../../../assets/Icons/manage-bikes.svg";
-import manageUsers from "../../../assets/Icons/manage-users.svg";
-import manageCoupons from "../../../assets/Icons/manage-coupons.svg";
+import { selectCurrentUser } from "../../../redux/Features/Auth/authSlice";
+import { useAppSelector } from "../../../redux/hooks";
+import { adminSidebarLinks, userSidebarLinks } from "./sidebar.constants";
 
 const DashboardSidebar = () => {
+
+  const user = useAppSelector(selectCurrentUser);
+  console.log(user);
   const location = useLocation();
-  const dashboardSidebarLinks = [
-    {
-      label: "Home",
-      path: "",
-      icon: home,
-    },
-    {
-      label: "Dashboard",
-      path: "dashboard",
-      icon: dashboard,
-    },
-    {
-      label: "Bikes",
-      path: "dashboard/browse-bikes",
-      icon: bikes,
-    },
-    {
-      label: "My Rentals",
-      path: "dashboard/my-rentals",
-      icon: myRentals,
-    },
-    {
-      label: "My Profile",
-      path: "dashboard/my-profile",
-      icon: profile,
-    },
-    {
-      label: "Manage Bikes",
-      path: "dashboard/manage-bikes",
-      icon: manageBikes,
-    },
-    {
-      label: "Manage Users",
-      path: "dashboard/manage-users",
-      icon: manageUsers,
-    },
-    {
-      label: "Return Bike",
-      path: "dashboard/return-bike",
-      icon: manageBikes,
-    },
-    {
-      label: "Manage Coupons",
-      path: "dashboard/manage-coupons",
-      icon: manageCoupons,
-    },
-  ];
+
+  const sidebarLinks = user.role === "admin" ? adminSidebarLinks : userSidebarLinks;
   return (
-    <div className="w-[300px] bg-[#2f3d46] h-screen sticky top-0 left-0 font-SpaceGrotesk">
+    <div className="w-[300px] bg-[#2f3d46] h-screen sticky top-0 left-0 font-SpaceGrotesk hidden lg:block">
       <div className="p-4">
         {/* Logo */}
         <Link to={"/"} className="flex items-center gap-2">
@@ -70,8 +23,9 @@ const DashboardSidebar = () => {
         </Link>
       </div>
 
-      <div className="flex flex-col mt-10">
-        {dashboardSidebarLinks.map((item) => (
+      <div className="flex flex-col gap-[10px] mt-10">
+        {
+        sidebarLinks.map((item) => (
           <Link
             key={item.label}
             to={`/${item.path}`}

@@ -2,9 +2,11 @@ import CouponCard from "./CouponCard";
 import bgImg from "../../assets/Images/coupon-bg-image.jpg";
 import quality from "../../assets/Icons/quality.svg";
 import price from "../../assets/Icons/price.svg";
+import { useGetAllCouponsQuery } from "../../redux/Features/CouponCode/couponCodeApi";
 
 
 const Coupon = () => {
+  const { data: coupons } = useGetAllCouponsQuery(undefined);
     const couponsDetails = [
         {
           title: "Step 1: Select Your Ride",
@@ -19,6 +21,7 @@ const Coupon = () => {
             icon : price
         },
       ];
+
   return (
     <div className="relative font-SpaceGrotesk mt-20 bg-gradient-to-r from-teal-50 to-indigo-50 p-10">
     {/* Background image with reduced opacity */}
@@ -50,7 +53,13 @@ const Coupon = () => {
             </div>
           ))}
         </div>
-        <CouponCard/>
+
+        {
+          coupons?.data?.slice(0,1).map(coupon => 
+
+            <CouponCard coupon={coupon}/>
+          )
+        }
       </div>
     </div>
   </div>

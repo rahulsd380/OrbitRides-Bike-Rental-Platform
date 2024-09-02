@@ -17,7 +17,7 @@ const ManageCoupons = () => {
   return (
     <div className="bg-white rounded-xl p-5 font-SpaceGrotesk">
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold text-[#85A98D]">Manage Coupons</h1>
+        <h1 className="text-xl md:text-3xl font-bold text-[#85A98D]">Manage Coupons</h1>
 
         <Button onClick={() => setOpenModal1(true)} variant="primary">
           Add New Coupon

@@ -50,10 +50,10 @@ const BikeListing = () => {
 
   return (
     <div className="bg-white rounded-xl p-5 font-SpaceGrotesk">
-      <div className="flex items-center justify-between">
+      <div className="w-full flex flex-col xl:flex-row gap-5 xl:gap-0 items-start xl:items-center justify-between">
         <h1 className="text-3xl font-bold text-[#85A98D]">Available Bikes</h1>
 
-        <div className="flex items-center gap-5">
+        <div className="flex flex-col md:flex-row items-center gap-5 xl:w-auto w-full">
           {/* Brand filtering */}
           <select
             className="bg-[#E9ECF2]/20 border border-[#364F53]/30 p-2 focus:border-[#85A98D] transition duration-300 focus:outline-none rounded w-full"
@@ -86,13 +86,13 @@ const BikeListing = () => {
             ))}
           </select>
 
-          <Button variant="primary" classNames="w-full ">
+          <Button variant="primary" classNames="w-full">
             <p className="text-center">Available Bikes</p>
           </Button>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 mt-7">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7 mt-7">
         {isBikeLoading ? (
           // loaders
           <>

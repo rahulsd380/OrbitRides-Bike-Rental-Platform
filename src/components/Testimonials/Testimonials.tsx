@@ -2,7 +2,7 @@ import TestimonialCard from "./TestimonialCard";
 
 const Testimonials = () => {
   return (
-    <div className="font-SpaceGrotesk max-w-[1300px] mx-auto mt-20">
+    <div className="font-SpaceGrotesk max-w-[1300px] mx-auto mt-20 p-7 xl:p-0">
       <h1 className="text-5xl font-bold text-center">
         What <span className="text-[#85A98D]">The Client</span> Says
       </h1>

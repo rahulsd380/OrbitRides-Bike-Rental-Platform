@@ -11,6 +11,7 @@ import downArrow from "../../../assets/Icons/down-arrow-dark.svg";
 import { useAppDispatch } from "../../../redux/hooks";
 import { logout } from "../../../redux/Features/Auth/authSlice";
 import { useNavigate } from "react-router-dom";
+import DashboardHamburgerMenu from "../../DashboardHamburgerMenu/DashboardHamburgerMenu";
 
 const DashboardHeader = () => {
   const dispatch = useAppDispatch();
@@ -51,7 +52,10 @@ const DashboardHeader = () => {
     }
   return (
     <div className="flex items-center justify-between w-full border-b border-[#DCDFE5] pb-3">
-      <div className="relative hidden xl:block">
+      <div className="block lg:hidden">
+      <DashboardHamburgerMenu/>
+      </div>
+      <div className="relative hidden lg:block">
         <img
           src={search}
           alt=""

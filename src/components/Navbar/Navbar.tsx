@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../../assets/Images/orbitrides-logo.png";
 import search from "../../assets/Icons/search.svg";
 import profileImg from "../../assets/Images/dumy-profile-img.avif";
@@ -8,6 +8,7 @@ import { selectCurrentUser } from "../../redux/Features/Auth/authSlice";
 import { useAppSelector } from "../../redux/hooks";
 
 const Navbar = () => {
+  const location = useLocation();
   const user = useAppSelector(selectCurrentUser);
 
   console.log(user);
@@ -23,7 +24,7 @@ const Navbar = () => {
     },
     {
       label: "Browse Bikes",
-      path: "browse-bikes",
+      path: "dashboard/browse-bikes",
     },
     {
       label: "Contact Us",
@@ -39,7 +40,8 @@ const Navbar = () => {
     },
   ];
   return (
-    <div className="flex items-center justify-between max-w-[1300px] mx-auto mt-5 font-SpaceGrotesk px-4 md:px-7 xl:px-0">
+    <div className="mt-5">
+      <div className="flex items-center justify-between max-w-[1300px] mx-auto  font-SpaceGrotesk px-4 md:px-7 xl:px-0">
       <div className="flex items-center gap-10">
         <Link to={"/"} className="">
           <img src={logo} alt="" className="w-60" />
@@ -99,6 +101,7 @@ const Navbar = () => {
         </div>
 
      
+    </div>
     </div>
   );
 };

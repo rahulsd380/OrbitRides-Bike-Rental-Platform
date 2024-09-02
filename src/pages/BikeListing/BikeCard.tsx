@@ -87,11 +87,11 @@ const BikeCard: React.FC<TBike> = ({
       {/* Bike description */}
       <p className="font-Nunito text-sm mt-1">{shortDescription}</p>
 
-      <div className="flex items-center gap-5 mt-4">
-        <Button onClick={() => setOpenModal1(true)} variant="primary">
+      <div className="flex items-center gap-5 mt-4 w-full">
+        <Button onClick={() => setOpenModal1(true)} variant="primary" classNames="">
           Book Now
         </Button>
-        <Link to={`/dashboard/bike-details/${_id}`}>
+        <Link to={`/dashboard/bike-details/${_id}`} className="">
           <Button variant="secondary">View Details</Button>
         </Link>
       </div>

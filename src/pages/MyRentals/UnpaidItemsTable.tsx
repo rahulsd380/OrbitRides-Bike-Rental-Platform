@@ -15,7 +15,7 @@ const UnpaidItemsTable = ({ unPaidBike, isLoading }) => {
   return (
     <div className="w-full mt-5">
       <div className="overflow-x-auto font-Roboto w-full">
-        <table className="min-w-full bg-white border border-gray-200 rounded-xl">
+        <table className="w-[1000px] overflow-x-auto bg-white border border-gray-200 rounded-xl">
           <thead className="">
             <tr>
               <th className="rounded-tl-md px-6 py-3 border-b-2 border-gray-200 bg-[#85A98D] text-left text-xs font-semibold text-white uppercase tracking-wider">

@@ -1,6 +1,9 @@
 import { useGetMeQuery, useUpdateProfileMutation } from "../../../redux/Features/Auth/authApi";
 import profileImg from "../../../assets/Images/about-us-img1.jpg";
-import icon from "../../../assets/Icons/bikes.svg";
+import supportIcon from "../../../assets/Icons/supportIcon.svg";
+import seller from "../../../assets/Icons/seller.svg";
+import payment from "../../../assets/Icons/payment.svg";
+import report from "../../../assets/Icons/report.svg";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Button from "../../../components/Button/Button";
@@ -42,24 +45,24 @@ const Profile = () => {
 
   const supportDetails = [
     {
-      icon: icon,
+      icon: supportIcon,
       label: "Get Support",
     },
     {
-      icon: icon,
+      icon: payment,
       label: "Payment History",
     },
     {
-      icon: icon,
+      icon: report,
       label: "Report",
     },
     {
-      icon: icon,
-      label: "Get Support",
+      icon: seller,
+      label: "Join as Seller",
     },
     {
-      icon: icon,
-      label: "Get Support",
+      icon: supportIcon,
+      label: "Contact Now",
     },
   ];
 
@@ -71,9 +74,9 @@ const Profile = () => {
   return (
     <div>
       <DashboardStatusHero/>
-      <div className="font-SpaceGrotesk flex gap-10 mt-10">
+      <div className="font-SpaceGrotesk flex flex-col lg:flex-row gap-10 mt-10">
       {/* Left side */}
-      <div className="bg-white p-4 rounded-xl w-[40%]">
+      <div className="bg-white p-4 rounded-xl w-full lg:w-[40%]">
         <div className="flex flex-col gap-4 items-center">
           {/* Profile img */}
           <div className="size-32 rounded-xl">
@@ -102,7 +105,7 @@ const Profile = () => {
       </div>
 
       {/* Right side */}
-      <div className="bg-white p-4 rounded-xl w-[60%]">
+      <div className="bg-white p-4 rounded-xl w-full lg:w-[60%]">
         <h1 className="text-xl font-bold text-[#85A98D]">
           Profile Informations
         </h1>
