@@ -51,7 +51,7 @@ const BikeCard: React.FC<TBike> = ({
       ? descriptionWords.slice(0, 10).join(" ") + "..."
       : description;
   return (
-    <div className="bg-white p-4 rounded-xl font-SpaceGrotesk shadow-lg left-">
+    <div className="bg-white p-4 rounded-xl font-SpaceGrotesk shadow-lg w-[320px]">
       <div className="bg-gray-200 p-3 rounded-t-xl relative">
         {/* Brand */}
         <div className="absolute right-3 top-3 px-2 py-[3px] rounded-3xl bg-white border border-[#85A98D]/40">
@@ -85,7 +85,7 @@ const BikeCard: React.FC<TBike> = ({
       </div>
 
       {/* Bike description */}
-      <p className="font-Nunito text-sm mt-1">{shortDescription}</p>
+      <p className="font-Nunito text-sm mt-1 w-[280px]">{shortDescription}</p>
 
       <div className="flex items-center gap-5 mt-4 w-full">
         <Button onClick={() => setOpenModal1(true)} variant="primary" classNames="">
@@ -129,7 +129,7 @@ const BikeCard: React.FC<TBike> = ({
               placeholder="Enter your full startTime"
             />
             {errors.startTime && (
-              <span className="text-warning-10 text-start">
+              <span className="text-rose-500 text-start">
                 {errors.startTime.message as string}
               </span>
             )}

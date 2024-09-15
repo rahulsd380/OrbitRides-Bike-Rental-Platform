@@ -64,7 +64,7 @@ const Signup = () => {
 
   return (
     <div className="font-SpaceGrotesk flex flex-col lg:flex-row gap-20">
-      <div className="w-full lg:w-[50%] bg-gradient-to-r from-teal-600 to-teal-800 rounded-tr-none lg:rounded-tr-[80px] p-6 h-full xl:h-screen">
+      <div className="w-full lg:w-[50%] bg-gradient-to-r from-teal-600 to-teal-800 rounded-tr-none lg:rounded-r-[80px] p-6 h-full xl:h-screen">
         {/* Logo */}
         <Link to={"/"} className="flex items-center gap-2">
           <img className="w-16" src={logo} alt="" />
@@ -88,7 +88,7 @@ const Signup = () => {
       <div className="w-full lg:w-[50%] py-8">
         <div className="flex justify-end px-8 lg:px-36">
           <div className="flex items-center gap-3">
-            <Link to={"/login"} className="hover:underline hover:text-[#85A98D]">Already have an account?</Link>
+            <Link to={"/login"} className="hover:underline hover:text-[#85A98D] text-[#364F53] dark:text-[#D9D9D9]/70">Already have an account?</Link>
           <HamburgerMenu />
           </div>
         </div>
@@ -99,24 +99,24 @@ const Signup = () => {
           className="flex flex-col gap-4 w-full"
         >
           <div>
-            <h1 className="font-bold text-[27px]">Create New Account</h1>
-            <p className="max-w-[500px] text-sm">
+            <h1 className="font-bold text-[27px] dark:text-[#D9D9D9]/80 text-[#364F53]">Create New Account</h1>
+            <p className="max-w-[500px] text-sm text-[#364F53] dark:text-[#D9D9D9]/70">
               Lorem ipsum dolor sit amet consectetur adipisicing{" "}
             </p>
           </div>
 
           {/* Name */}
           <div className="flex flex-col gap-1 w-full">
-            <p className="text-body-text font-medium text-sm">Name</p>
+            <p className="text-body-text font-medium text-sm text-[#364F53] dark:text-[#D9D9D9]/70">Name</p>
             <input
               {...register("name", { required: "Name is required" })}
               type="text"
               id="name"
-              className="bg-[#E9ECF2]/20  border border-[#364F53]/30 p-2 focus:border-[#85A98D] transition duration-300 focus:outline-none rounded w-full"
+              className="bg-[#E9ECF2]/20 dark:bg-[#E9ECF2]/10  border border-[#364F53]/30 p-2 focus:border-[#85A98D] transition duration-300 focus:outline-none rounded w-full text-[#364F53] dark:text-[#D9D9D9]/70"
               placeholder="Enter your full name"
             />
             {errors.name && (
-              <span className="text-warning-10 text-start">
+              <span className="text-rose-500 text-start">
                 {errors.name.message as string}
               </span>
             )}
@@ -124,16 +124,16 @@ const Signup = () => {
 
           {/* Email */}
           <div className="flex flex-col gap-1 w-full">
-            <p className="text-body-text font-medium text-sm">Email</p>
+            <p className="text-body-text font-medium text-sm text-[#364F53] dark:text-[#D9D9D9]/70">Email</p>
             <input
               {...register("email", { required: "Email is required" })}
               type="text"
               id="email"
-              className="bg-[#E9ECF2]/20  border border-[#364F53]/30 p-2 focus:border-[#85A98D] transition duration-300 focus:outline-none rounded w-full"
+              className="bg-[#E9ECF2]/20 dark:bg-[#E9ECF2]/10  border border-[#364F53]/30 p-2 focus:border-[#85A98D] transition duration-300 focus:outline-none rounded w-full text-[#364F53] dark:text-[#D9D9D9]/70"
               placeholder="Enter your email"
             />
             {errors.email && (
-              <span className="text-warning-10 text-start">
+              <span className="text-rose-500 text-start">
                 {errors.email.message as string}
               </span>
             )}
@@ -141,16 +141,16 @@ const Signup = () => {
 
           {/* Address */}
           <div className="flex flex-col gap-1 w-full">
-            <p className="text-body-text font-medium text-sm">Address</p>
+            <p className="text-body-text font-medium text-sm text-[#364F53] dark:text-[#D9D9D9]/70">Address</p>
             <input
               {...register("address", { required: "Address is required" })}
               type="text"
               id="address"
-              className="bg-[#E9ECF2]/20  border border-[#364F53]/30 p-2 focus:border-[#85A98D] transition duration-300 focus:outline-none rounded w-full"
+              className="bg-[#E9ECF2]/20 dark:bg-[#E9ECF2]/10  border border-[#364F53]/30 p-2 focus:border-[#85A98D] transition duration-300 focus:outline-none rounded w-full text-[#364F53] dark:text-[#D9D9D9]/70"
               placeholder="Enter your Address"
             />
             {errors.address && (
-              <span className="text-warning-10 text-start">
+              <span className="text-rose-500 text-start">
                 {errors.address.message as string}
               </span>
             )}
@@ -160,16 +160,16 @@ const Signup = () => {
           <div className="flex flex-col lg:flex-row items-center gap-3">
             {/* Phone Number */}
             <div className="flex flex-col gap-1 w-full">
-              <p className="text-body-text font-medium text-sm">Phone Number</p>
+              <p className="text-body-text font-medium text-sm text-[#364F53] dark:text-[#D9D9D9]/70">Phone Number</p>
               <input
                 {...register("phone", { required: "Phone Number is required" })}
                 type="text"
                 id="phone"
-                className="bg-[#E9ECF2]/20  border border-[#364F53]/30 p-2 focus:border-[#85A98D] transition duration-300 focus:outline-none rounded w-full"
+                className="bg-[#E9ECF2]/20 dark:bg-[#E9ECF2]/10  border border-[#364F53]/30 p-2 focus:border-[#85A98D] transition duration-300 focus:outline-none rounded w-full text-[#364F53] dark:text-[#D9D9D9]/70"
                 placeholder="Enter your Phone Number"
               />
               {errors.phone && (
-                <span className="text-warning-10 text-start">
+                <span className="text-rose-500 text-start">
                   {errors.phone.message as string}
                 </span>
               )}
@@ -177,7 +177,7 @@ const Signup = () => {
 
             {/* Password */}
             <div className="flex flex-col gap-1 w-full relative">
-              <p className="text-body-text font-medium text-sm">Password</p>
+              <p className="text-body-text font-medium text-sm text-[#364F53] dark:text-[#D9D9D9]/70">Password</p>
               <input
                 {...register("password", {
                   required: "Password is required",
@@ -188,11 +188,11 @@ const Signup = () => {
                 })}
                 type={`${showPassword ? "text" : "password"}`}
                 id="password"
-                className="bg-[#E9ECF2]/20  border border-[#364F53]/30 p-2 focus:border-[#85A98D] transition duration-300 focus:outline-none rounded w-full"
+                className="bg-[#E9ECF2]/20 dark:bg-[#E9ECF2]/10  border border-[#364F53]/30 p-2 focus:border-[#85A98D] transition duration-300 focus:outline-none rounded w-full text-[#364F53] dark:text-[#D9D9D9]/70"
                 placeholder="Password must be at least 8 characters"
               />
               {errors.password && (
-                <span className="text-warning-10 text-start">
+                <span className="text-rose-500 text-start">
                   {errors.password.message as string}
                 </span>
               )}
@@ -222,7 +222,7 @@ const Signup = () => {
               id="rememberMe"
               className="accent-[#85A98D] size-4"
             />
-            <label htmlFor="rememberMe" className="text-body-text font-medium">
+            <label htmlFor="rememberMe" className="text-body-text font-medium text-[#364F53] dark:text-[#D9D9D9]/70">
               I agree with the{" "}
               <span className="text-[#85A98D] hover:underline">
                 Terms & Condition

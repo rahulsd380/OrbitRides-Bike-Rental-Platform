@@ -15,8 +15,8 @@ import { setUser } from "../../redux/Features/Auth/authSlice";
 import { useLoginMutation } from "../../redux/Features/Auth/authApi";
 import { verifyToken } from "../../utils/verifyToken";
 import { CustomToast } from "../../components/ToastMessage/ToastMessage";
-import successIcon from "../../assets/Icons/successIcon.svg"
-import errorIcon from "../../assets/Icons/error.svg"
+import successIcon from "../../assets/Icons/successIcon.svg";
+import errorIcon from "../../assets/Icons/error.svg";
 
 type TLoginData = {
   email: string;
@@ -24,7 +24,7 @@ type TLoginData = {
 };
 
 const Login = () => {
-  const [login, {isLoading : isLoginIn}] = useLoginMutation();
+  const [login, { isLoading: isLoginIn }] = useLoginMutation();
 
   const dispatch = useAppDispatch();
   const [showPassword, setShowPassword] = useState(false);
@@ -41,17 +41,17 @@ const Login = () => {
       password: data.password,
     };
 
-    try{
+    try {
       const response = await login(loginData).unwrap();
-    const user = verifyToken(response.data?.accessToken);
-    dispatch(setUser({ user, token: response.data.accessToken }));
-    CustomToast({
-      title: "Welcome back!!",
-      message: "Explore new bikes",
-      icon: successIcon,
-    });
-    navigate("/dashboard");
-    }catch(err){
+      const user = verifyToken(response.data?.accessToken);
+      dispatch(setUser({ user, token: response.data.accessToken }));
+      CustomToast({
+        title: "Welcome back!!",
+        message: "Explore new bikes",
+        icon: successIcon,
+      });
+      navigate("/dashboard");
+    } catch (err) {
       CustomToast({
         title: "Invalid email or password",
         icon: errorIcon,
@@ -59,10 +59,9 @@ const Login = () => {
     }
   };
 
-
   return (
     <div className="font-SpaceGrotesk flex flex-col lg:flex-row gap-20">
-      <div className="w-full lg:w-[50%] bg-gradient-to-r from-teal-600 to-teal-800 rounded-tr-none lg:rounded-tr-[80px] p-6 h-full xl:h-screen">
+      <div className="w-full lg:w-[50%] bg-gradient-to-r from-teal-600 to-teal-800 rounded-tr-none lg:rounded-r-[80px] p-6 h-full xl:h-screen">
         {/* Logo */}
         <Link to={"/"} className="flex items-center gap-2">
           <img className="w-16" src={logo} alt="" />
@@ -85,7 +84,7 @@ const Login = () => {
           <div className="flex items-center gap-3">
             <Link
               to={"/signup"}
-              className="hover:underline hover:text-[#85A98D]"
+              className="hover:underline hover:text-[#85A98D] dark:text-[#D9D9D9]/80 text-[#364F53]"
             >
               Don't have an account?
             </Link>
@@ -99,24 +98,28 @@ const Login = () => {
             className="flex flex-col gap-4 w-full"
           >
             <div>
-              <h1 className="font-bold text-[27px]">Login Your Account</h1>
-              <p className="max-w-[500px] text-sm">
+              <h1 className="font-bold text-[27px] dark:text-[#D9D9D9]/80 text-[#364F53]">
+                Login Your Account
+              </h1>
+              <p className="max-w-[500px] text-sm text-[#364F53] dark:text-[#D9D9D9]/50">
                 Lorem ipsum dolor sit amet consectetur adipisicing{" "}
               </p>
             </div>
 
             {/* Email */}
-            <div className="flex flex-col gap-1 w-full">
-              <p className="text-body-text font-medium text-sm">Email</p>
+            <div className="flex flex-col gap-1 w-full mt-3">
+              <p className="text-body-text font-medium text-sm text-[#364F53] dark:text-[#D9D9D9]/70">
+                Email
+              </p>
               <input
                 {...register("email", { required: "Email is required" })}
                 type="text"
                 id="email"
-                className="bg-[#E9ECF2]/20  border border-[#364F53]/30 p-2 focus:border-[#85A98D] transition duration-300 focus:outline-none rounded w-full"
+                className="bg-[#E9ECF2]/20 dark:bg-[#E9ECF2]/10  border border-[#364F53]/30 p-2 focus:border-[#85A98D] transition duration-300 focus:outline-none rounded w-full text-[#364F53] dark:text-[#D9D9D9]/70"
                 placeholder="Enter your email"
               />
               {errors.email && (
-                <span className="text-warning-10 text-start">
+                <span className="text-rose-500 text-start">
                   {errors.email.message as string}
                 </span>
               )}
@@ -124,7 +127,9 @@ const Login = () => {
 
             {/* Password */}
             <div className="flex flex-col gap-1 w-full relative">
-              <p className="text-body-text font-medium text-sm">Password</p>
+              <p className="text-body-text font-medium text-sm text-[#364F53] dark:text-[#D9D9D9]/70">
+                Password
+              </p>
               <input
                 {...register("password", {
                   required: "Password is required",
@@ -135,11 +140,11 @@ const Login = () => {
                 })}
                 type={`${showPassword ? "text" : "password"}`}
                 id="password"
-                className="bg-[#E9ECF2]/20  border border-[#364F53]/30 p-2 focus:border-[#85A98D] transition duration-300 focus:outline-none rounded w-full"
+                className="bg-[#E9ECF2]/20 dark:bg-[#E9ECF2]/10  border border-[#364F53]/30 p-2 focus:border-[#85A98D] transition duration-300 focus:outline-none rounded w-full text-[#364F53] dark:text-[#D9D9D9]/70"
                 placeholder="Password must be at least 8 characters"
               />
               {errors.password && (
-                <span className="text-warning-10 text-start">
+                <span className="text-rose-500 text-start">
                   {errors.password.message as string}
                 </span>
               )}
@@ -160,7 +165,7 @@ const Login = () => {
               )}
             </div>
 
-              {/* Remember me & Forgot password */}
+            {/* Remember me & Forgot password */}
             <div className="flex items-center justify-between">
               {/* Remember Me */}
               <div className="flex items-center gap-2">
@@ -172,7 +177,7 @@ const Login = () => {
                 />
                 <label
                   htmlFor="rememberMe"
-                  className="text-body-text font-medium"
+                  className="text-body-text font-medium text-[#364F53] dark:text-[#D9D9D9]/70"
                 >
                   Remember Me
                 </label>
@@ -185,9 +190,7 @@ const Login = () => {
             </div>
 
             <Button variant="primary">
-              {
-                isLoginIn ? "Login In..." : "Login"
-              }
+              {isLoginIn ? "Login In..." : "Login"}
             </Button>
             <Button
               variant="secondary"

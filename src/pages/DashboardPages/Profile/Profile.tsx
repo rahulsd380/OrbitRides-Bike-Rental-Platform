@@ -160,7 +160,7 @@ const Profile = () => {
               placeholder="Enter your full name"
             />
             {errors.name && (
-              <span className="text-warning-10 text-start">
+              <span className="text-rose-500 text-start">
                 {errors.name.message as string}
               </span>
             )}
@@ -178,7 +178,7 @@ const Profile = () => {
               placeholder="Enter your email"
             />
             {errors.email && (
-              <span className="text-warning-10 text-start">
+              <span className="text-rose-500 text-start">
                 {errors.email.message as string}
               </span>
             )}
@@ -198,7 +198,7 @@ const Profile = () => {
               placeholder="Enter your Address"
             />
             {errors.address && (
-              <span className="text-warning-10 text-start">
+              <span className="text-rose-500 text-start">
                 {errors.address.message as string}
               </span>
             )}
@@ -216,7 +216,7 @@ const Profile = () => {
               placeholder="Enter your Phone Number"
             />
             {errors.phone && (
-              <span className="text-warning-10 text-start">
+              <span className="text-rose-500 text-start">
                 {errors.phone.message as string}
               </span>
             )}

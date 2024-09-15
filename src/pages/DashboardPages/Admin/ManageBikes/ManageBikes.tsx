@@ -4,11 +4,15 @@ import Modal1 from "../../../../components/Modal1";
 import ManageBikeCard from "./ManageBikeCard";
 import { useState } from "react";
 import cross from "../../../../assets/Icons/cross.svg";
-import { useGetAllBikesQuery } from "../../../../redux/Features/Bikes/bikeApi";
+import { useCreateBikeMutation, useGetAllBikesQuery } from "../../../../redux/Features/Bikes/bikeApi";
 import { TBike } from "../../../BikeListing/bike.types";
+import { CustomToast } from "../../../../components/ToastMessage/ToastMessage";
+import successIcon from "../../../../assets/Icons/successIcon.svg";
+import errorIcon from "../../../../assets/Icons/error.svg";
 
 const ManageBikes = () => {
   const {data} = useGetAllBikesQuery({});
+  const [createBike, {isLoading:isBikeAdding}] = useCreateBikeMutation({});
   const {
     register,
     handleSubmit,
@@ -17,7 +21,37 @@ const ManageBikes = () => {
 
   const [openModal1, setOpenModal1] = useState(false);
 
-  const handleAddNewBike = (data) => {};
+  const handleAddNewBike = async (data) => {
+    const bikeData = {
+      name: data.name,
+      description: data.description,
+      brand: data.brand,
+      model: data.model,
+      pricePerHour: data.pricePerHour,
+      cc: Number(data.cc),
+      image: data.image,
+      year: Number(data.year),
+    };
+
+    try{
+      const response = await createBike(bikeData).unwrap();
+      console.log(response);
+    if(response.success) {
+      setOpenModal1(false);
+      CustomToast({
+        title: "Bike created successfully.",
+        icon: successIcon,
+      });
+    }
+    }catch(err){
+      setOpenModal1(false);(false);
+      CustomToast({
+        title: "Something went wrong.",
+        icon: errorIcon,
+      });
+      return;
+    }
+  };
 
 
   return (
@@ -83,11 +117,28 @@ const ManageBikes = () => {
             )}
           </div>
 
+          {/* Bike Image URL */}
+          <div className="flex flex-col gap-1 w-full">
+            <p className="text-body-text font-medium text-sm">Bike Image URL</p>
+            <input
+              {...register("image", { required: "Image is required" })}
+              type="text"
+              id="image"
+              className="bg-[#E9ECF2]/20  border border-[#364F53]/30 p-2 focus:border-[#85A98D] transition duration-300 focus:outline-none rounded w-full"
+              placeholder="Enter the bike image url"
+            />
+            {errors.image && (
+              <span className="text-rose-600 text-start">
+                {errors.image.message as string}
+              </span>
+            )}
+          </div>
+
           {/* Price */}
           <div className="flex flex-col gap-1 w-full">
             <p className="text-body-text font-medium text-sm">Price</p>
             <input
-              {...register("price", { required: "Price is required" })}
+              {...register("pricePerHour", { required: "Price is required" })}
               type="text"
               id="price"
               className="bg-[#E9ECF2]/20  border border-[#364F53]/30 p-2 focus:border-[#85A98D] transition duration-300 focus:outline-none rounded w-full"
@@ -168,9 +219,27 @@ const ManageBikes = () => {
             )}
           </div>
 
+          {/* Description */}
+          <div className="flex flex-col gap-1 w-full">
+            <p className="text-body-text font-medium text-sm">Description</p>
+            <textarea
+              {...register("description", { required: "Description is required" })}
+              rows={5}
+              id="Description"
+              className="bg-[#E9ECF2]/20  border border-[#364F53]/30 p-2 focus:border-[#85A98D] transition duration-300 focus:outline-none rounded w-full"
+              placeholder="Enter the bike Description"
+            />
+            {errors.description && (
+              <span className="text-rose-600 text-start">
+                {errors.description.message as string}
+              </span>
+            )}
+          </div>
           <button type="submit" className="w-full">
             <Button variant="primary" classNames="w-full">
-              Submit
+              {
+                isBikeAdding? "Loading..." : "Add Bike"
+              }
             </Button>
           </button>
         </form>
@@ -182,3 +251,4 @@ const ManageBikes = () => {
 };
 
 export default ManageBikes;
+

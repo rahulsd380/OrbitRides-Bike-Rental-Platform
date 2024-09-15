@@ -34,7 +34,7 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <div className="relative font-SpaceGrotesk mt-20 bg-gradient-to-r from-teal-50 to-indigo-50 p-10">
+    <div className="relative font-SpaceGrotesk mt-20 dark:bg-[#2f3d46] bg-teal-50 p-10">
       {/* Background image with reduced opacity */}
       <div
         className="absolute inset-0 bg-no-repeat bg-cover opacity-20"
@@ -43,10 +43,10 @@ const WhyChooseUs = () => {
 
       {/* Content */}
       <div className="relative z-10">
-        <h1 className="text-5xl font-bold text-center">
+        <h1 className="text-5xl font-bold text-center dark:text-[#D9D9D9]/80 text-[#364F53]">
           Why <span className="text-[#85A98D]">Choose Us</span>
         </h1>
-        <p className="max-w-[700px] mx-auto text-center mt-2">
+        <p className="max-w-[700px] mx-auto text-center mt-2 text-[#364F53] dark:text-[#D9D9D9]/70">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. In beatae
           culpa libero est fugit. Totam, molestias. Sapiente explicabo sunt{" "}
         </p>
@@ -59,8 +59,8 @@ const WhyChooseUs = () => {
                   <img src={item.icon} alt="" className="size-16" />
                 </div>
                 <div>
-                  <h1 className="text-xl font-semibold">{item.title}</h1>
-                  <p className="max-w-[440px] text-sm">{item.subtitle}</p>
+                  <h1 className="text-xl font-semibold dark:text-[#D9D9D9]/80 text-[#364F53]">{item.title}</h1>
+                  <p className="max-w-[440px] text-sm text-[#364F53] dark:text-[#D9D9D9]/50">{item.subtitle}</p>
                 </div>
               </div>
             ))}

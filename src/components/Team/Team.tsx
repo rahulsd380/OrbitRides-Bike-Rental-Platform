@@ -32,19 +32,19 @@ const Team = () => {
             }
         ]; 
     return (
-        <div className='font-SpaceGrotesk  mt-20 relative p-10 bg-gradient-to-r from-teal-50 to-indigo-50'>
+        <div className='font-SpaceGrotesk mt-20 relative p-5 md:p-10 dark:bg-[#2f3d46] bg-teal-50'>
             <div
-        className="absolute inset-0 bg-no-repeat bg-cover opacity-50"
+        className="absolute inset-0 bg-no-repeat bg-cover opacity-50 dark:opacity-20"
         style={{ backgroundImage: `url(${bgImg})` }}
       ></div>
       <div className='max-w-[1300px] mx-auto'>
 
       
 
-            <h1 className="text-5xl font-bold text-center">
+            <h1 className="text-5xl font-bold text-center dark:text-[#D9D9D9]/80 text-[#364F53]">
           Meet Our<span className="text-[#85A98D]"> {" "}Talented Team</span>
         </h1>
-        <p className="max-w-[700px] mx-auto text-center mt-2">
+        <p className="max-w-[700px] mx-auto text-center mt-2 text-[#364F53] dark:text-[#D9D9D9]/70">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. In beatae
           culpa libero est fugit. Totam, molestias. Sapiente explicabo sunt{" "}
         </p>
@@ -52,7 +52,7 @@ const Team = () => {
             <div className="flex justify-center gap-1 md:gap-4 mt-10">
             {sliders.map((slide, idx) => (
                 <div onClick={() => toggle({ currentIdx: idx })}
-                    className={`relative h-[400px] rounded-3xl bg-gray-300 duration-500 ease-in-out ${isOpen == idx ? ' w-[300px] md:w-[400px] ' : 'w-[200px]'}`}
+                    className={`relative h-[400px] rounded-3xl bg-gray-300 duration-500 ease-in-out ${isOpen == idx ? ' w-[150px] md:w-[300px] lg:w-[400px] ' : 'w-[70px] md:w-[100px] lg:w-[200px]'}`}
                     key={idx}
                     >
                     <img width={640} height={540} className="h-full rounded-3xl object-cover" src={slide.img} alt="accordion navigate ui" />

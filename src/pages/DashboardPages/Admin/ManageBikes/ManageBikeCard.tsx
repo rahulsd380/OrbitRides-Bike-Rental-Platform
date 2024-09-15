@@ -6,7 +6,8 @@ import cross from "../../../../assets/Icons/cross.svg";
 import { TBike } from "../../../BikeListing/bike.types";
 import { useDeleteBikeMutation, useUpdateBikeInfoMutation } from "../../../../redux/Features/Bikes/bikeApi";
 import { CustomToast } from "../../../../components/ToastMessage/ToastMessage";
-import successIcon from "../../../../assets/Icons/successIcon.svg"
+import successIcon from "../../../../assets/Icons/successIcon.svg";
+import errorIcon from "../../../../assets/Icons/error.svg";
 
 type BikeData = {
   name: string;
@@ -52,10 +53,18 @@ const ManageBikeCard:React.FC<TBike> = ({ _id, name,image, description, brand, p
       const response = await updateBikeInfo({id:_id, bikeUpdatedData}).unwrap();
       console.log(response);
     if(response.success) {
-      console.log("Updated successfully");
+      setOpenUpdateModal(false);
+      CustomToast({
+        title: "Updated successfully.",
+        icon: successIcon,
+      });
     }
     }catch(err){
-      console.log(err)
+      setOpenUpdateModal(false);
+      CustomToast({
+        title: "Something went wrong.",
+        icon: errorIcon,
+      });
       return;
     }
   };
@@ -283,10 +292,28 @@ const ManageBikeCard:React.FC<TBike> = ({ _id, name,image, description, brand, p
             )}
           </div>
 
+          {/* Description */}
+          <div className="flex flex-col gap-1 w-full">
+            <p className="text-body-text font-medium text-sm">Description</p>
+            <textarea
+             defaultValue={description}
+              {...register("description", { required: "Description is required" })}
+              rows={5}
+              id="Description"
+              className="bg-[#E9ECF2]/20  border border-[#364F53]/30 p-2 focus:border-[#85A98D] transition duration-300 focus:outline-none rounded w-full"
+              placeholder="Enter the bike Description"
+            />
+            {errors.description && (
+              <span className="text-rose-600 text-start">
+                {errors.description.message as string}
+              </span>
+            )}
+          </div>
+
           <button type="submit" className="w-full">
             <Button variant="primary" classNames="w-full">
               {
-                isUpdating ? "Updating" : "Update"
+                isUpdating ? "Updating..." : "Update"
               }
             </Button>
           </button>

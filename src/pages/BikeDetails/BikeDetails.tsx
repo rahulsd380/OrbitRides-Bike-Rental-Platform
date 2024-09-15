@@ -181,7 +181,7 @@ const BikeDetails = () => {
               placeholder="Enter your full startTime"
             />
             {errors.startTime && (
-              <span className="text-warning-10 text-start">
+              <span className="text-rose-500 text-start">
                 {errors.startTime.message as string}
               </span>
             )}

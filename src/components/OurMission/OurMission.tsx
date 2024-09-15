@@ -29,34 +29,34 @@ const OurMission = () => {
       
       
     return (
-        <div className='font-SpaceGrotesk max-w-[1300px] mx-auto mt-20'>
-            <div className="flex items-center gap-16">
+        <div className='font-SpaceGrotesk max-w-[1300px] mx-auto mt-20 p-5 xl:p-0'>
+            <div className="flex flex-col lg:flex-row items-center gap-16">
 
-            <div className="flex flex-col gap-7 w-1/2">
+            <div className="flex flex-col gap-7 w-full lg:w-1/2">
                 <div>
-                <h1 className='text-3xl font-bold'>Our Mission</h1>
+                <h1 className='text-3xl font-bold dark:text-[#D9D9D9]/80 text-[#364F53]'>Our Mission</h1>
                 <div className="bg-orange-700 h-1 w-44 mt-1"></div>
                 </div>
 
-                <div>
-                <p className="text-[#2f3d46]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas consequuntur placeat, totam eligendi tempore at vitae deleniti quas a quia, enim, commodi numquam. Quisquam cumque vitae at. Saepe, aliquid exercitationem.</p>
+                <div className="text-[#364F53] dark:text-[#D9D9D9]/50">
+                <p className="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas consequuntur placeat, totam eligendi tempore at vitae deleniti quas a quia, enim, commodi numquam. Quisquam cumque vitae at. Saepe, aliquid exercitationem.</p>
                 
-                <p className="text-[#2f3d46] mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas consequuntur placeat, totam eligendi tempore at vitae deleniti quas a quia, enim, commodi numquam. Quisquam cumque vitae at. Saepe, aliquid exercitationem.</p>
+                <p className="mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas consequuntur placeat, totam eligendi tempore at vitae deleniti quas a quia, enim, commodi numquam. Quisquam cumque vitae at. Saepe, aliquid exercitationem.</p>
                 </div>
 
                 <img src={img1} alt="" />
 
             </div>
 
-            <div className="grid grid-cols-2 gap-7 w-1/2">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-7 w-full lg:w-1/2">
                 {
                     ourMission.map((item, index) =>
-                        <div key={index} className="rounded-lg p-3 max-w-[350px] shadow-lg">
+                        <div key={index} className="rounded-lg p-3 max-w-[350px] shadow-lg bg-white dark:bg-[#E9ECF2]/10">
                     <div className="size-16 rounded-full flex items-center justify-center p-3 bg-[#D9D9D9]/30 border border-[#ABAEB2]/30">
                         <img src={icon} alt="" className="" />
                     </div>
-                    <h1 className='text-2xl font-bold mt-3'>{item.title}</h1>
-                    <p className="text-[#2f3d46] mt-2">{item.subtitle}</p>
+                    <h1 className='text-2xl font-bold mt-3 text-[#85A98D]'>{item.title}</h1>
+                    <p className="text-[#364F53] dark:text-[#D9D9D9]/50 mt-2">{item.subtitle}</p>
                 </div>
                     )
                 }
