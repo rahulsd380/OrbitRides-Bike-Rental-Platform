@@ -13,6 +13,8 @@ const MyRentals = () => {
 
     const paidBike = data?.data?.filter(bike => bike?.totalCost > 0);
     const unPaidBike = data?.data?.filter(bike => bike?.totalCost === 0);
+
+    console.log(paidBike);
     
     
     return (

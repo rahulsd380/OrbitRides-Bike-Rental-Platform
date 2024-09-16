@@ -94,17 +94,17 @@ const ManageBikeCard:React.FC<TBike> = ({ _id, name,image, description, brand, p
       : description;
 
     return (
-        <div className="bg-white p-4 rounded-xl font-SpaceGrotesk shadow-lg left-">
-      <div className="bg-gray-200 p-3 rounded-t-xl">
+        <div className="bg-white dark:bg-[#E9ECF2]/10 p-4 rounded-xl font-SpaceGrotesk shadow-lg left-">
+      <div className="bg-gray-200 dark:bg-[#D9D9D9]/20 p-3 rounded-t-xl flex justify-center items-center">
         <img src={image} alt="" className="h-44" />
       </div>
       <div className="flex items-center justify-between mt-5">
-        <h1 className="font-bold text-lg">{name}</h1>
-        <div className="px-2 py-[3px] rounded-3xl bg-white border border-[#85A98D]/40">
+        <h1 className="font-bold text-lg dark:text-[#D9D9D9]/80 text-[#364F53]">{name}</h1>
+        <div className="px-2 py-[3px] rounded-3xl bg-white dark:bg-[#2f3d46] border border-[#85A98D]/40">
           <p className="text-xs text-[#85A98D]">{brand}</p>
         </div>
       </div>
-      <p className="font-Nunito text-sm mt-1">{shortDescription}</p>
+      <p className="font-Nunito text-sm mt-1 dark:text-[#D9D9D9]/50 text-[#364F53]">{shortDescription}</p>
 
       <div className="flex items-center gap-5 mt-4">
         <Button onClick={() => setOpenDeleteConfirmation(true)} variant="warning" classNames="bg-rose-500">Delete</Button>

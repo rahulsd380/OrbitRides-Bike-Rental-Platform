@@ -7,12 +7,11 @@ import { adminSidebarLinks, userSidebarLinks } from "./sidebar.constants";
 const DashboardSidebar = () => {
 
   const user = useAppSelector(selectCurrentUser);
-  console.log(user);
   const location = useLocation();
 
-  const sidebarLinks = user.role === "admin" ? adminSidebarLinks : userSidebarLinks;
+  const sidebarLinks = user?.role === "admin" ? adminSidebarLinks : userSidebarLinks;
   return (
-    <div className="w-[300px] bg-[#2f3d46] h-screen sticky top-0 left-0 font-SpaceGrotesk hidden lg:block">
+    <div className="w-[300px] bg-[#2f3d46] border-r border-gray-600/50 h-screen sticky top-0 left-0 font-SpaceGrotesk hidden lg:block">
       <div className="p-4">
         {/* Logo */}
         <Link to={"/"} className="flex items-center gap-2">

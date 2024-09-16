@@ -51,10 +51,10 @@ const BikeCard: React.FC<TBike> = ({
       ? descriptionWords.slice(0, 10).join(" ") + "..."
       : description;
   return (
-    <div className="bg-white p-4 rounded-xl font-SpaceGrotesk shadow-lg w-[320px]">
-      <div className="bg-gray-200 p-3 rounded-t-xl relative">
+    <div className="bg-white dark:bg-[#E9ECF2]/10 p-4 rounded-xl font-SpaceGrotesk shadow-lg w-[320px]">
+      <div className="bg-gray-200 dark:bg-[#D9D9D9]/20 p-3 rounded-t-xl relative">
         {/* Brand */}
-        <div className="absolute right-3 top-3 px-2 py-[3px] rounded-3xl bg-white border border-[#85A98D]/40">
+        <div className="absolute right-3 top-3 px-2 py-[3px] rounded-3xl bg-white dark:bg-[#2f3d46]  border border-[#85A98D]/40">
           <p className="text-xs text-[#85A98D]">{brand}</p>
         </div>
 
@@ -68,7 +68,7 @@ const BikeCard: React.FC<TBike> = ({
 
       <div className="flex items-center justify-between mt-2">
         {/* Bike name */}
-        <h1 className="font-bold text-lg">{name}</h1>
+        <h1 className="font-bold text-lg dark:text-white text-[#364F53]">{name}</h1>
 
         {/* Available status */}
         <div
@@ -76,16 +76,16 @@ const BikeCard: React.FC<TBike> = ({
             isAvailable
               ? "border-[#85A98D]/40 text-[#85A98D]"
               : "border-rose-600 text-rose-600"
-          } px-2 py-[3px] rounded-3xl bg-white border mt-5 w-fit`}
+          } bg-white dark:bg-[#2f3d46]  px-2 py-[3px] rounded-3xl border w-fit`}
         >
           <p className="text-xs">
-            {isAvailable ? "Available" : "No Available"}
+            {isAvailable ? "Available" : "Not Available"}
           </p>
         </div>
       </div>
 
       {/* Bike description */}
-      <p className="font-Nunito text-sm mt-1 w-[280px]">{shortDescription}</p>
+      <p className="font-Nunito text-sm mt-1 w-[280px] dark:text-[#D9D9D9]/80 text-[#364F53]">{shortDescription}</p>
 
       <div className="flex items-center gap-5 mt-4 w-full">
         <Button onClick={() => setOpenModal1(true)} variant="primary" classNames="">

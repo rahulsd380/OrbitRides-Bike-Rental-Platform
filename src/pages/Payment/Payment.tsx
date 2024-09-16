@@ -6,7 +6,6 @@ import Total from "./Total";
 const Payment = () => {
     const location = useLocation();
   const { rentalData, bikeData } = location.state || {};
-  console.log(bikeData);
 
   if (!rentalData || !bikeData) {
     return <div>No data available</div>;

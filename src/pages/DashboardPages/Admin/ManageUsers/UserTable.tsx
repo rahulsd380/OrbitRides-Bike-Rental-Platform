@@ -62,7 +62,7 @@ const UserTable = ({ users }: { users: TUser }) => {
   return (
     <div className="w-full">
       <div className="overflow-x-auto font-Roboto w-full">
-        <table className="min-w-full bg-white border border-gray-200 rounded-xl overflow-x-auto">
+        <table className="min-w-full bg-white dark:bg-[#E9ECF2]/10  rounded-xl overflow-x-auto">
           <thead className="">
             <tr>
               <th className="rounded-tl-md px-6 py-3 border-b-2 border-gray-200 bg-[#85A98D] text-left text-xs font-semibold text-white uppercase tracking-wider">
@@ -85,22 +85,22 @@ const UserTable = ({ users }: { users: TUser }) => {
           </thead>
           <tbody className="w-full overflow-x-auto">
             {users?.map((user: TUser) => (
-              <tr>
-                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+              <tr className="bg-white dark:dark:bg-[#2f3d46]/10 dark:text-[#D9D9D9]/80 text-[#364F53]">
+                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 dark:border-gray-500">
                   {user?.name}
                 </td>
-                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 dark:border-gray-500">
                   {user?.email}
                 </td>
 
-                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 dark:border-gray-500">
                   {user?.address}
                 </td>
-                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 dark:border-gray-500">
                   {user?.role}
                 </td>
 
-                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 dark:border-gray-500">
                   <div className="flex items-center gap-5 mt-4">
 
                     <button

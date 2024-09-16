@@ -76,7 +76,7 @@ const Profile = () => {
       <DashboardStatusHero/>
       <div className="font-SpaceGrotesk flex flex-col lg:flex-row gap-10 mt-10">
       {/* Left side */}
-      <div className="bg-white p-4 rounded-xl w-full lg:w-[40%]">
+      <div className="bg-white dark:bg-[#E9ECF2]/10 p-4 rounded-xl w-full lg:w-[40%]">
         <div className="flex flex-col gap-4 items-center">
           {/* Profile img */}
           <div className="size-32 rounded-xl">
@@ -87,7 +87,7 @@ const Profile = () => {
             {profileData?.data?.name}
             </h1>
             <div className="flex items-center justify-center">
-              <p className="bg-[#364F53] px-3 py-1 text-white text-xs rounded-3xl w-fit">
+              <p className="bg-[#364F53] dark:bg-[#E9ECF2]/10 px-3 py-1 text-white text-xs rounded-3xl w-fit">
               {profileData?.data?.email}
               </p>
             </div>
@@ -98,14 +98,14 @@ const Profile = () => {
           {supportDetails.map((item) => (
             <div key={item.label} className="flex items-center gap-2">
               <img src={item.icon} alt="" className="size-5" />
-              <p>{item.label}</p>
+              <p className="dark:text-[#D9D9D9]/80 text-[#364F53]">{item.label}</p>
             </div>
           ))}
         </div>
       </div>
 
       {/* Right side */}
-      <div className="bg-white p-4 rounded-xl w-full lg:w-[60%]">
+      <div className="bg-white dark:bg-[#E9ECF2]/10 p-4 rounded-xl w-full lg:w-[60%]">
         <h1 className="text-xl font-bold text-[#85A98D]">
           Profile Informations
         </h1>
@@ -116,9 +116,9 @@ const Profile = () => {
             onClick={() => setProfileTab("PersonalDetails")}
             className={`${
               profileTab === "PersonalDetails"
-                ? "bg-[#85A98D] border-[[#85A98D] text-white"
-                : "bg-[#DCDFE5]/30 border-[#364F53]/20  text-[#364F53]"
-            }  border text-sm px-4 py-1 rounded-full`}
+                ? "bg-[#85A98D] text-white"
+                : "bg-[#DCDFE5]/30  dark:text-[#D9D9D9]/80 text-[#364F53]"
+            }  text-sm px-4 py-1 rounded-full`}
           >
             Personal Details
           </button>
@@ -126,9 +126,9 @@ const Profile = () => {
             onClick={() => setProfileTab("PaymentMethods")}
             className={`${
               profileTab === "PaymentMethods"
-                ? "bg-[#85A98D] border-[[#85A98D] text-white"
-                : "bg-[#DCDFE5]/30 border-[#364F53]/20  text-[#364F53]"
-            }  border text-sm px-4 py-1 rounded-full`}
+                ? "bg-[#85A98D] text-white"
+                : "bg-[#DCDFE5]/30  dark:text-[#D9D9D9]/80 text-[#364F53]"
+            }  text-sm px-4 py-1 rounded-full`}
           >
             Payment Methods
           </button>
@@ -136,9 +136,9 @@ const Profile = () => {
             onClick={() => setProfileTab("PaymentHistory")}
             className={`${
               profileTab === "PaymentHistory"
-                ? "bg-[#85A98D] border-[[#85A98D] text-white"
-                : "bg-[#DCDFE5]/30 border-[#364F53]/20  text-[#364F53]"
-            }  border text-sm px-4 py-1 rounded-full`}
+                ? "bg-[#85A98D] text-white"
+                : "bg-[#DCDFE5]/30  dark:text-[#D9D9D9]/80 text-[#364F53]"
+            }  text-sm px-4 py-1 rounded-full`}
           >
             Payment History
           </button>
@@ -150,13 +150,13 @@ const Profile = () => {
         <div className="flex flex-col md:flex-row gap-5">
           {/* Name */}
           <div className="flex flex-col gap-1 w-full">
-            <p className="text-body-text font-medium text-sm">Name</p>
+            <p className="text-body-text font-medium text-sm text-[#364F53] dark:text-[#D9D9D9]/70">Name</p>
             <input
               {...register("name", { required: "Name is required" })}
               defaultValue={profileData?.data?.name}
               type="text"
               id="name"
-              className="bg-[#E9ECF2]/20  border border-[#364F53]/30 p-2 focus:border-[#85A98D] transition duration-300 focus:outline-none rounded w-full"
+              className="bg-[#E9ECF2]/20 dark:bg-[#E9ECF2]/10  border border-[#364F53]/30 p-2 focus:border-[#85A98D] transition duration-300 focus:outline-none rounded w-full text-[#364F53] dark:text-[#D9D9D9]/70"
               placeholder="Enter your full name"
             />
             {errors.name && (
@@ -168,13 +168,13 @@ const Profile = () => {
 
           {/* Email */}
           <div className="flex flex-col gap-1 w-full">
-            <p className="text-body-text font-medium text-sm">Email</p>
+            <p className="text-body-text font-medium text-sm text-[#364F53] dark:text-[#D9D9D9]/70">Email</p>
             <input
               {...register("email", { required: "Email is required" })}
               defaultValue={profileData?.data?.email}
               type="text"
               id="email"
-              className="bg-[#E9ECF2]/20  border border-[#364F53]/30 p-2 focus:border-[#85A98D] transition duration-300 focus:outline-none rounded w-full"
+              className="bg-[#E9ECF2]/20 dark:bg-[#E9ECF2]/10  border border-[#364F53]/30 p-2 focus:border-[#85A98D] transition duration-300 focus:outline-none rounded w-full text-[#364F53] dark:text-[#D9D9D9]/70"
               placeholder="Enter your email"
             />
             {errors.email && (
@@ -188,13 +188,13 @@ const Profile = () => {
         <div className="flex flex-col md:flex-row gap-5 mt-4">
           {/* Address */}
           <div className="flex flex-col gap-1 w-full">
-            <p className="text-body-text font-medium text-sm">Address</p>
+            <p className="text-body-text font-medium text-sm text-[#364F53] dark:text-[#D9D9D9]/70">Address</p>
             <input
               {...register("address", { required: "Address is required" })}
               defaultValue={profileData?.data?.address}
               type="text"
               id="address"
-              className="bg-[#E9ECF2]/20  border border-[#364F53]/30 p-2 focus:border-[#85A98D] transition duration-300 focus:outline-none rounded w-full"
+              className="bg-[#E9ECF2]/20 dark:bg-[#E9ECF2]/10  border border-[#364F53]/30 p-2 focus:border-[#85A98D] transition duration-300 focus:outline-none rounded w-full text-[#364F53] dark:text-[#D9D9D9]/70"
               placeholder="Enter your Address"
             />
             {errors.address && (
@@ -206,13 +206,13 @@ const Profile = () => {
 
           {/* Phone Number */}
           <div className="flex flex-col gap-1 w-full">
-            <p className="text-body-text font-medium text-sm">Phone Number</p>
+            <p className="text-body-text font-medium text-sm text-[#364F53] dark:text-[#D9D9D9]/70">Phone Number</p>
             <input
               {...register("phone", { required: "Phone Number is required" })}
               defaultValue={profileData?.data?.phone}
               type="text"
               id="phone"
-              className="bg-[#E9ECF2]/20  border border-[#364F53]/30 p-2 focus:border-[#85A98D] transition duration-300 focus:outline-none rounded w-full"
+              className="bg-[#E9ECF2]/20 dark:bg-[#E9ECF2]/10  border border-[#364F53]/30 p-2 focus:border-[#85A98D] transition duration-300 focus:outline-none rounded w-full text-[#364F53] dark:text-[#D9D9D9]/70"
               placeholder="Enter your Phone Number"
             />
             {errors.phone && (

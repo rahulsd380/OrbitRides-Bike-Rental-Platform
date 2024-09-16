@@ -1,4 +1,3 @@
-import Button from "../../../../components/Button/Button";
 import { useGetAllUsersQuery } from "../../../../redux/Features/Users/usersApi";
 import UserTable from "./UserTable";
 
@@ -10,13 +9,13 @@ const ManageUsers = () => {
     return (
         <div>
              <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold text-[#364F53]">Manage Users</h1>
+        <h1 className="text-3xl font-bold dark:text-[#D9D9D9]/80 text-[#364F53]">Manage Users</h1>
 
-        <div>
+        {/* <div>
           <Button variant="primary">
             Add New Bike
           </Button>
-        </div>
+        </div> */}
 
       </div>
 

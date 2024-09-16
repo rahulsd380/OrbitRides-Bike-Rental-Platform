@@ -1,15 +1,16 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 
 const UnpaidItemsTable = ({ unPaidBike, isLoading }) => {
-  // const navigate = useNavigate();
-  // const handleSubmitRental =(data) => {
-  //   const rentalData = {
-  //     bikeId : _id,
-  //     startTime : data.startTime,
-  //   };
-  //   navigate('/dashboard/payment', { state: { rentalData, bikeData: allBikes?.data } });
-  // }
+  console.log(unPaidBike);
+  const navigate = useNavigate();
+  const handleSubmitRental =(bikeId:string, startTime:string) => {
+    const rentalData = {
+      bikeId,
+      startTime
+    };
+    navigate('/dashboard/payment', { state: { rentalData, bikeData: unPaidBike?.data } });
+  }
 
 
   return (
@@ -83,9 +84,10 @@ const UnpaidItemsTable = ({ unPaidBike, isLoading }) => {
                     ৳ {cartItem.totalCost}
                   </td>
                   <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                    <Link to={"/dashboard/payment"}>
+                    
+                      <button onClick={() => handleSubmitRental(cartItem?.bikeId, cartItem?.startTime)}>
                       <Button variant="primary">Pay Now</Button>
-                    </Link>
+                      </button>
                   </td>
                 </tr>
               ))

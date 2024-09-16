@@ -11,13 +11,13 @@ const DashboardStatusHero = () => {
   }
 
   return (
-    <div className="bg-dark-5/40 rounded-lg font-SpaceGrotesk shadow flex flex-col md:flex-row gap-7 md:gap-0 items-center justify-between p-5">
+    <div className="bg-white dark:bg-[#E9ECF2]/10 rounded-lg font-SpaceGrotesk shadow flex flex-col md:flex-row gap-7 md:gap-0 items-center justify-between p-5">
       <div className="max-w-[800px]">
-        <h1 className="text-[#364F53] text-2xl font-bold">
+        <h1 className="dark:text-[#D9D9D9]/80 text-[#364F53] text-2xl font-bold">
           Good Morning,{" "}
           <span className="text-[#85A98D]">{profileData?.data?.name}</span>
         </h1>
-        <p className="text-[#364F53]/90 font-Nunito mt-2">
+        <p className="dark:text-[#D9D9D9]/50 text-[#364F53]/90 font-Nunito mt-2">
         Welcome back! We hope you’re ready for a productive day. If you need any assistance or have any questions, we’re here to help. Let's achieve great things today!
         </p>
 

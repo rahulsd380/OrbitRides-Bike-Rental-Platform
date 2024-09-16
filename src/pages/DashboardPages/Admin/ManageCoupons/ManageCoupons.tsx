@@ -15,7 +15,7 @@ const ManageCoupons = () => {
   const [openModal1, setOpenModal1] = useState(false);
 
   return (
-    <div className="bg-white rounded-xl p-5 font-SpaceGrotesk">
+    <div className="bg-white dark:bg-[#E9ECF2]/10 rounded-xl p-5 font-SpaceGrotesk">
       <div className="flex items-center justify-between">
         <h1 className="text-xl md:text-3xl font-bold text-[#85A98D]">Manage Coupons</h1>
 

@@ -34,13 +34,11 @@ const Team = () => {
     return (
         <div className='font-SpaceGrotesk mt-20 relative p-5 md:p-10 dark:bg-[#2f3d46] bg-teal-50'>
             <div
-        className="absolute inset-0 bg-no-repeat bg-cover opacity-50 dark:opacity-20"
+        className="absolute inset-0 bg-no-repeat bg-cover opacity-50 dark:opacity-10"
         style={{ backgroundImage: `url(${bgImg})` }}
       ></div>
       <div className='max-w-[1300px] mx-auto'>
-
       
-
             <h1 className="text-5xl font-bold text-center dark:text-[#D9D9D9]/80 text-[#364F53]">
           Meet Our<span className="text-[#85A98D]"> {" "}Talented Team</span>
         </h1>

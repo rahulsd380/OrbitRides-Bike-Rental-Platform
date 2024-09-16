@@ -8,7 +8,7 @@ const SuccessMessage = () => {
     <div className="font-SpaceGrotesk overflow-hidden flex items-center justify-center">
       <Confetti width={500} height={400} />
 
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6 overflow-hidden">
         <div className="flex items-center justify-center">
           <img src={success} alt="" className="size-[200px]" />
         </div>

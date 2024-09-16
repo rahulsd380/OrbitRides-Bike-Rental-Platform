@@ -37,7 +37,7 @@ const WhyChooseUs = () => {
     <div className="relative font-SpaceGrotesk mt-20 dark:bg-[#2f3d46] bg-teal-50 p-10">
       {/* Background image with reduced opacity */}
       <div
-        className="absolute inset-0 bg-no-repeat bg-cover opacity-20"
+        className="absolute inset-0 bg-no-repeat bg-cover opacity-50 dark:opacity-10"
         style={{ backgroundImage: `url(${bgImg})` }}
       ></div>
 
