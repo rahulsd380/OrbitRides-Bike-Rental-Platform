@@ -1,7 +1,18 @@
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 
-const UnpaidItemsTable = ({ unPaidBike, isLoading }) => {
+type TRental = {
+  bikeId: string;
+  isReturned: boolean;
+  returnTime: string | null;
+  startTime: string;
+  totalCost: number;
+  userId: string;
+  _id: string;
+  __v: number;
+};
+
+const UnpaidItemsTable = ({ unPaidBike, isLoading } : {unPaidBike:TRental[], isLoading:boolean}) => {
   console.log(unPaidBike);
   const navigate = useNavigate();
   const handleSubmitRental =(bikeId:string, startTime:string) => {
@@ -9,7 +20,7 @@ const UnpaidItemsTable = ({ unPaidBike, isLoading }) => {
       bikeId,
       startTime
     };
-    navigate('/dashboard/payment', { state: { rentalData, bikeData: unPaidBike?.data } });
+    navigate('/dashboard/payment', { state: { rentalData, bikeData: unPaidBike } });
   }
 
 

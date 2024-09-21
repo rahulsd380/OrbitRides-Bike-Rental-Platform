@@ -27,6 +27,8 @@ const BikeDetails = () => {
     year,
   } = allBikes?.data as TBike || {};
 
+  console.log(allBikes.data);
+
 
   const {
     register,

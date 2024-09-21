@@ -18,6 +18,7 @@ import ManageCoupons from "../pages/DashboardPages/Admin/ManageCoupons/ManageCou
 import Profile from "../pages/DashboardPages/Profile/Profile";
 import ProtectedRoute from "../components/ProtectedRoute";
 import ContactUsPage from "../pages/ContactUsPage/ContactUsPage";
+import CompareBikes from "../pages/DashboardPages/CompareBikes/CompareBikes";
 
 export const router = createBrowserRouter([
   {
@@ -94,6 +95,10 @@ export const router = createBrowserRouter([
       {
           path: "my-profile",
           element: <Profile/>
+      },
+      {
+          path: "compare-bikes",
+          element: <CompareBikes/>
       },
     ]
   },

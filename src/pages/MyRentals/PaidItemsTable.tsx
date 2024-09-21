@@ -1,6 +1,16 @@
+type TPaidBike = {
+  name:string;
+  bikeId: string;
+  isReturned: boolean;
+  returnTime: string | null;
+  startTime: string;
+  totalCost: number;
+  userId: string;
+  _id: string;
+  __v: number;
+};
 
-
-const PaidItemsTable = ({paidBike, isLoading}) => {
+const PaidItemsTable = ({paidBike, isLoading}: {paidBike:TPaidBike[], isLoading:boolean}) => {
 
   return (
     <div className="max-w-[1000px] mt-5">
@@ -53,7 +63,7 @@ const PaidItemsTable = ({paidBike, isLoading}) => {
               </tr>
             ) : (
               // Render Data Rows once loaded
-              paidBike?.data?.map((cartItem) => (
+              paidBike?.map((cartItem) => (
                 <tr key={cartItem._id}>
                   <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                     {cartItem.name}
@@ -67,7 +77,7 @@ const PaidItemsTable = ({paidBike, isLoading}) => {
                       : "N/A"}
                   </td>
                   <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                    ৳ {cartItem.totalCost}
+                    ৳ {cartItem.totalCost.toFixed(2)}
                   </td>
                 </tr>
               ))

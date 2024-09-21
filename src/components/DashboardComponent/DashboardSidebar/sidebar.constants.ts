@@ -6,6 +6,7 @@ import profile from "../../../assets/Icons/profile.svg";
 import manageBikes from "../../../assets/Icons/manage-bikes.svg";
 import manageUsers from "../../../assets/Icons/manage-users.svg";
 import manageCoupons from "../../../assets/Icons/manage-coupons.svg";
+import compare from "../../../assets/Icons/compare.svg";
 
 export const adminSidebarLinks = [
   {
@@ -70,5 +71,10 @@ export const userSidebarLinks = [
     label: "My Profile",
     path: "dashboard/my-profile",
     icon: profile,
+  },
+  {
+    label: "Compare Bikes",
+    path: "dashboard/compare-bikes",
+    icon: compare,
   },
 ];
