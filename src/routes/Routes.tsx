@@ -66,7 +66,7 @@ export const router = createBrowserRouter([
       {
           path: "bike-details/:id",
           element: <BikeDetails/>,
-          loader : ({params}) => fetch(`http://localhost:5000/api/bikes/${params.id}`)
+          loader : ({params}) => fetch(`https://orbit-rides-server.vercel.app/api/bikes/${params.id}`)
       },
       {
           path: "payment",
