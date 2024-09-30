@@ -6,10 +6,16 @@ import Modal1 from "../../components/Modal1";
 import cross from "../../assets/Icons/cross.svg";
 import { useForm } from "react-hook-form";
 
+export type TSubmitRental = {
+  bikeId:string;
+  startTime:string
+}
+
 const BikeDetails = () => {
 
   const navigate = useNavigate();
-  const allBikes = useLoaderData();
+  const allBikes = useLoaderData() as { data: TBike };
+
 //   Tab for description & reviews
   const [tab, setTab] = useState("Description");
 
@@ -25,18 +31,16 @@ const BikeDetails = () => {
     name,
     pricePerHour,
     year,
-  } = allBikes?.data as TBike || {};
-
-  console.log(allBikes.data);
+  } = allBikes?.data || {};
 
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<TSubmitRental>();
 
-  const handleSubmitRental =(data) => {
+  const handleSubmitRental =(data:TSubmitRental) => {
     const rentalData = {
       bikeId : _id,
       startTime : data.startTime,

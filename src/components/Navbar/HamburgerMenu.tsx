@@ -16,6 +16,9 @@ import { FiHome } from "react-icons/fi";
 import { FaBookReader } from "react-icons/fa";
 import { RiEBikeFill } from "react-icons/ri";
 import { BiSolidContact } from "react-icons/bi";
+import { useAppSelector } from "../../redux/hooks";
+import { selectCurrentUser } from "../../redux/Features/Auth/authSlice";
+import { TUser } from "../DashboardComponent/DashboardSidebar/DashboardSidebar";
 
 const HamburgerMenu = (): JSX.Element => {
   const links = [
@@ -46,7 +49,7 @@ const HamburgerMenu = (): JSX.Element => {
     },
   ];
   // Just for testing puspose now
-  const [user, setUser] = useState(false);
+  const user = useAppSelector(selectCurrentUser) as TUser | null;
   const accountLinks = [
     {
       pathName: "Chat",
@@ -167,7 +170,7 @@ const HamburgerMenu = (): JSX.Element => {
               ))}
 
               {/* Logout button */}
-              {user === false ? (
+              {user ? (
                 <button className="font-Roboto text-gray-300 font-normal hover:text-blue-400 transition duration-300 flex items-center gap-2 transform hover:-translate-y-0.5">
                   <CiLogout />
                   Logout

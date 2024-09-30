@@ -79,14 +79,11 @@ const ReturnDetailsTable = ({
                     })}
                   </td>
                   <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 dark:border-gray-500">
-                    {
-                      rental?.returnTime === null ? 
-                      "N/A" :
-                    new Date(rental?.returnTime).toLocaleTimeString("en-US", {
+                    {rental?.startTime ? new Date(rental.startTime).toLocaleTimeString("en-US", {
                       hour: "numeric",
                       minute: "numeric",
                       hour12: true,
-                    })}
+                    }) : "N/A"}
                   </td>
                   <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 dark:border-gray-500">
                     ৳ {rental?.totalCost?.toFixed(2)}

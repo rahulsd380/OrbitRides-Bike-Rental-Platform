@@ -43,7 +43,9 @@ const ContactUs = () => {
           <div className="flex flex-col gap-3 text-base">
             <div className="flex items-center gap-2">
               <img src={location} alt="location-icon" className="size-5" />
-              <p className="text-[#364F53] dark:text-[#D9D9D9]/70">Cumilla-3501, Bangladesh</p>
+              <p className="text-[#364F53] dark:text-[#D9D9D9]/70">
+                Cumilla-3501, Bangladesh
+              </p>
             </div>
             <div className="flex items-center gap-2">
               <img src={phone} alt="location-icon" className="size-5" />
@@ -56,7 +58,9 @@ const ContactUs = () => {
             </div>
             <div className="flex items-center gap-2">
               <img src={email} alt="location-icon" className="size-5" />
-              <p className="text-[#364F53] dark:text-[#D9D9D9]/70">rahulsd380@gmail.com</p>
+              <p className="text-[#364F53] dark:text-[#D9D9D9]/70">
+                rahulsd380@gmail.com
+              </p>
             </div>
           </div>
         </div>

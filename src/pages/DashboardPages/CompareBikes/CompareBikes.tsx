@@ -11,8 +11,8 @@ import noBikeFoundAnimation from "../../../assets/no-bike.json";
 
 const CompareBikes = () => {
   const { data, isLoading: isBikeLoading } = useGetAllBikesQuery({});
-  const [selectedBikes, setSelectedBikes] = useState<TBike[]>([]); // Array to store selected bikes
-  const maxSelectedBikes = 2; // Set the maximum number of bikes allowed for comparison
+  const [selectedBikes, setSelectedBikes] = useState<TBike[]>([]);
+  const maxSelectedBikes = 2;
 
   const handleSelectBike = (bike: TBike) => {
     // Check if the bike is already selected
@@ -21,23 +21,19 @@ const CompareBikes = () => {
     );
 
     if (isAlreadySelected) {
-      // Deselect the bike by removing it from the array
+      // Deselectng  the bike
       setSelectedBikes(
         selectedBikes.filter((selected) => selected._id !== bike._id)
       );
     } else if (selectedBikes.length < maxSelectedBikes) {
-      // Allow adding the bike if the current selection is less than the limit
       setSelectedBikes([...selectedBikes, bike]);
     } else {
-      // Optional: Provide user feedback if they attempt to select more than the allowed number of bikes
       CustomToast({
         title: `You can only select up to ${maxSelectedBikes} bikes for comparison.`,
         icon: errorIcon,
       });
     }
   };
-
-  console.log(selectedBikes); // This will log the array of selected bikes
 
   return (
     <div className="bg-white dark:bg-[#E9ECF2]/10 rounded-xl p-5 font-SpaceGrotesk">
@@ -55,7 +51,7 @@ const CompareBikes = () => {
 
         <div className="flex flex-col lg:flex-row gap-5 xl:gap-10 mt-5">
           {selectedBikes.length > 0 &&
-            selectedBikes.map((bike) => (
+            selectedBikes.map((bike:TBike) => (
               <SelectedBikeCard key={bike._id} bike={bike} />
             ))}
         </div>
@@ -85,10 +81,10 @@ const CompareBikes = () => {
               <CompareBikeCard
                 key={bike?._id}
                 bike={bike}
-                handleSelectBike={handleSelectBike} // Pass the handler function
+                handleSelectBike={handleSelectBike}
                 isSelected={selectedBikes.some(
                   (selected) => selected._id === bike._id
-                )} // Pass the selected state
+                )}
               />
             ))
           )}

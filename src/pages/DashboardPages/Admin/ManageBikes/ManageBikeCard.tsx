@@ -69,7 +69,7 @@ const ManageBikeCard:React.FC<TBike> = ({ _id, name,image, description, brand, p
     }
   };
 
-  const handleDeleteBike = async (data :TBike) => {
+  const handleDeleteBike = async () =>  {
     
     try{
       const res = await deleteBike(_id).unwrap();
@@ -82,7 +82,6 @@ const ManageBikeCard:React.FC<TBike> = ({ _id, name,image, description, brand, p
     }catch(err){
       console.log(err);
     }
-    console.log(data);
   };
 
 
@@ -134,11 +133,13 @@ const ManageBikeCard:React.FC<TBike> = ({ _id, name,image, description, brand, p
             Cancel
           </Button>
 
-          <Button onClick={handleDeleteBike} variant="warning">
+          <button onClick={handleDeleteBike}>
+          <Button variant="warning">
             {
               isBikeDeleting ? "Deleting..." : "Delete"
             }
           </Button>
+          </button>
         </div>
         </Modal1>
 

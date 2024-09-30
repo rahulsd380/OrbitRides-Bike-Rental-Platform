@@ -8,6 +8,15 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Button from "../../../components/Button/Button";
 import DashboardStatusHero from "../../../components/DashboardStatusHero/DashboardStatusHero";
+import { CustomToast } from "../../../components/ToastMessage/ToastMessage";
+import successIcon from "../../../assets/Icons/successIcon.svg";
+
+type TProfileUpdatedData ={
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+}
 
 const Profile = () => {
     const [updateProfile, {isLoading:isProfileUpdating}] = useUpdateProfileMutation();
@@ -16,10 +25,10 @@ const Profile = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<TProfileUpdatedData>();
   const { data:profileData, isLoading } = useGetMeQuery({});
 
-  const handleUpdateProfile = async (data) => {
+  const handleUpdateProfile = async (data:TProfileUpdatedData) => {
 
     const profileUpdatedData = {
         name : data.name,
@@ -34,7 +43,10 @@ const Profile = () => {
         const response = await updateProfile(profileUpdatedData).unwrap();
         console.log(response);
       if(response.success) {
-        console.log("Updated successfully");
+        CustomToast({
+          title: "Profile updated successfully",
+          icon: successIcon,
+        });
       }
       }catch(err){
         console.log(err)

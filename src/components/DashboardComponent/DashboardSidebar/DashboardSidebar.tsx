@@ -4,9 +4,18 @@ import { selectCurrentUser } from "../../../redux/Features/Auth/authSlice";
 import { useAppSelector } from "../../../redux/hooks";
 import { adminSidebarLinks, userSidebarLinks } from "./sidebar.constants";
 
+export type TUser = {
+  email: string;
+  exp: number;
+  iat: number;
+  role: string;
+  userId: string;
+};
+
 const DashboardSidebar = () => {
 
-  const user = useAppSelector(selectCurrentUser);
+  const user = useAppSelector(selectCurrentUser) as TUser | null;
+  console.log(user);
   const location = useLocation();
 
   const sidebarLinks = user?.role === "admin" ? adminSidebarLinks : userSidebarLinks;

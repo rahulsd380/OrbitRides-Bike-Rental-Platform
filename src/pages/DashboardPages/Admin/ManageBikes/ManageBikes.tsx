@@ -10,18 +10,30 @@ import { CustomToast } from "../../../../components/ToastMessage/ToastMessage";
 import successIcon from "../../../../assets/Icons/successIcon.svg";
 import errorIcon from "../../../../assets/Icons/error.svg";
 
+type TAddBikeFormData = {
+  name: string;
+  description: string;
+  brand: string;
+  model: string;
+  pricePerHour: number;
+  cc: string | number; 
+  image: string;
+  year: string | number;
+};
+
 const ManageBikes = () => {
   const {data} = useGetAllBikesQuery({});
+  const bikes: TBike[] = data?.data || [];
   const [createBike, {isLoading:isBikeAdding}] = useCreateBikeMutation({});
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<TAddBikeFormData>();
 
   const [openModal1, setOpenModal1] = useState(false);
 
-  const handleAddNewBike = async (data) => {
+  const handleAddNewBike = async (data:TAddBikeFormData) => {
     const bikeData = {
       name: data.name,
       description: data.description,
@@ -61,8 +73,8 @@ const ManageBikes = () => {
   const [isAvailableFilter, setIsAvailableFilter] = useState<string>("");
 
   // Unique brand and model items
-  const modelItems: string[] = [...new Set(data?.data?.map((item) => item.model))];
-  const brandItems: string[] = [...new Set(data?.data?.map((item) => item.brand))];
+  const modelItems: string[] = [...new Set(bikes.map((item) => item.model))];
+  const brandItems: string[] = [...new Set(bikes.map((item) => item.brand))];
   const availabilityItems = ["Available", "Unavailable"];
 
   // Apply filters whenever data or filters change
@@ -72,16 +84,16 @@ const ManageBikes = () => {
     let filtered = data.data;
 
     if (selectedBrand) {
-      filtered = filtered.filter((bike) => bike.brand === selectedBrand);
+      filtered = filtered.filter((bike:TBike) => bike.brand === selectedBrand);
     }
 
     if (selectedModel) {
-      filtered = filtered.filter((bike) => bike.model === selectedModel);
+      filtered = filtered.filter((bike:TBike) => bike.model === selectedModel);
     }
 
     if (isAvailableFilter) {
       const isAvailableBool = isAvailableFilter === "Available";
-      filtered = filtered.filter((bike) => bike.isAvailable === isAvailableBool);
+      filtered = filtered.filter((bike:TBike) => bike.isAvailable === isAvailableBool);
     }
 
     setFilteredBikes(filtered);
@@ -218,13 +230,13 @@ const ManageBikes = () => {
             <input
               {...register("pricePerHour", { required: "Price is required" })}
               type="text"
-              id="price"
+              id="pricePerHour"
               className="bg-[#E9ECF2]/20  border border-[#364F53]/30 p-2 focus:border-[#85A98D] transition duration-300 focus:outline-none rounded w-full"
               placeholder="Enter the bike Price"
             />
-            {errors.price && (
+            {errors.pricePerHour && (
               <span className="text-rose-600 text-start">
-                {errors.price.message as string}
+                {errors.pricePerHour.message as string}
               </span>
             )}
           </div>

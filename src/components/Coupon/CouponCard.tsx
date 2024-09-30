@@ -1,7 +1,10 @@
 import gift from "../../assets/Icons/gift.svg";
-import { TCouponData } from "../../pages/DashboardPages/Admin/ManageCoupons/ManageCoupons";
+import { TCoupon } from "./coupon.types";
 
-const CouponCard:React.FC<TCouponData> = ({coupon}) => {
+type TProps = {
+  coupon : TCoupon
+}
+const CouponCard:React.FC<TProps> = ({coupon}) => {
     return (
         <div className="bg-[#85A98D] w-full md:w-[80%] xl:w-[35%] rounded-2xl p-8">
         <h1 className="font-SpaceGrotesk italic text-xl font-bold text-[#364F53]">

@@ -3,10 +3,12 @@ import bgImg from "../../assets/Images/coupon-bg-image.jpg";
 import quality from "../../assets/Icons/quality.svg";
 import price from "../../assets/Icons/price.svg";
 import { useGetAllCouponsQuery } from "../../redux/Features/CouponCode/couponCodeApi";
+import { TCoupon } from "./coupon.types";
 
 
 const Coupon = () => {
   const { data: coupons } = useGetAllCouponsQuery(undefined);
+  console.log(coupons);
     const couponsDetails = [
         {
           title: "Step 1: Select Your Ride",
@@ -55,7 +57,7 @@ const Coupon = () => {
         </div>
 
         {
-          coupons?.data?.slice(0,1).map(coupon => 
+          coupons?.data?.slice(0,1).map((coupon:TCoupon) => 
 
             <CouponCard coupon={coupon}/>
           )

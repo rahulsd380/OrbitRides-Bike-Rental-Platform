@@ -5,6 +5,7 @@ import { useState } from "react";
 import Modal1 from "../../components/Modal1";
 import { useForm } from "react-hook-form";
 import cross from "../../assets/Icons/cross.svg";
+import { TSubmitRental } from "../BikeDetails/BikeDetails";
 
 const BikeCard: React.FC<TBike> = ({
   _id,
@@ -19,7 +20,7 @@ const BikeCard: React.FC<TBike> = ({
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<TSubmitRental>();
 
   const [openModal1, setOpenModal1] = useState(false);
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ const BikeCard: React.FC<TBike> = ({
     pricePerHour,
   };
 
-  const handleSubmitRental = (data) => {
+  const handleSubmitRental = (data:TSubmitRental) => {
     const rentalData = {
       bikeId: _id,
       startTime: data.startTime,

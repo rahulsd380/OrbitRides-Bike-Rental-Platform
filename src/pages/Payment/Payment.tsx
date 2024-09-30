@@ -6,9 +6,6 @@ const Payment = () => {
   const location = useLocation();
   const { rentalData, bikeData } = location.state || {};
 
-  console.log(rentalData);
-  console.log(bikeData);
-
   if (!rentalData || !bikeData) {
     return <div>No data available</div>;
   }

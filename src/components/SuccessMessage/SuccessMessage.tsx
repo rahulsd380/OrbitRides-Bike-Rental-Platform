@@ -16,7 +16,7 @@ const SuccessMessage = () => {
           <h1 className="text-2xl font-semibold text-neutral-55 text-center">
             Booked Successfull!!
           </h1>
-          <p className="text-sm max-w-[345px] text-gray-800 mx-auto text-center mt-1">
+          <p className="text-sm max-w-[345px] text-gray-800 dark:text-white mx-auto text-center mt-1">
             Explore & ride new bike!!
           </p>
         </div>

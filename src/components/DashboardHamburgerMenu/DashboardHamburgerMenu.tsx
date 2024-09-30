@@ -5,9 +5,10 @@ import { adminSidebarLinks, userSidebarLinks } from '../DashboardComponent/Dashb
 import { selectCurrentUser } from '../../redux/Features/Auth/authSlice';
 import { useAppSelector } from '../../redux/hooks';
 import logo from "../../assets/Images/logo.png";
+import { TUser } from '../DashboardComponent/DashboardSidebar/DashboardSidebar';
 
 const DashboardHamburgerMenu = () => {
-  const user = useAppSelector(selectCurrentUser);
+  const user = useAppSelector(selectCurrentUser) as TUser | null;
   const [isHamburgerOpen, setIsHamburgerOpen] = useState<boolean>(false);
 
   const toggleHamburgerMenu = (): void => {
@@ -31,7 +32,7 @@ const DashboardHamburgerMenu = () => {
     };
   }, [isHamburgerOpen]);
 
-  const sidebarLinks = user.role === "admin" ? adminSidebarLinks : userSidebarLinks;
+  const sidebarLinks = user?.role === "admin" ? adminSidebarLinks : userSidebarLinks;
 
   return (
     <div className="relative hamburgerMenu">

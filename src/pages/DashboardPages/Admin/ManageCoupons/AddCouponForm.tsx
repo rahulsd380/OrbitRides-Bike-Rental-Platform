@@ -8,7 +8,11 @@ type TCouponFormData = {
   off: string;
 };
 
-const AddCouponForm = ({ setOpenModal1 }) => {
+type AddCouponFormProps = {
+  setOpenModal1: (isOpen: boolean) => void;
+};
+
+const AddCouponForm = ({ setOpenModal1 }: AddCouponFormProps) => {
   const [createCouponCode, { isLoading: isCouponAdding }] =
     useCreateCouponCodeMutation();
 

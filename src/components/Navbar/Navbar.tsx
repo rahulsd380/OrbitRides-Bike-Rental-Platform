@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "../../assets/Images/orbitrides-logo.png";
+import logo from "../../assets/Images/logo.png";
 // import search from "../../assets/Icons/search.svg";
 import Button from "../Button/Button";
 import HamburgerMenu from "./HamburgerMenu";
@@ -48,8 +48,9 @@ const Navbar = () => {
       <div className="flex items-center justify-between max-w-[1300px] mx-auto  font-SpaceGrotesk px-4 md:px-7 xl:px-0">
         <div className="flex items-center gap-10">
           {/* <button onClick={changeTheme}>Change theme</button> */}
-          <Link to={"/"} className="">
-            <img src={logo} alt="" className="w-60" />
+          <Link to={"/"} className="flex items-center gap-2">
+            <img src={logo} alt="" className="w-16" />
+            <h1 className="text-2xl font-bold text-[#364F53] dark:text-[#D9D9D9]">Orbit <span className="text-[#85A98D]">Rides</span></h1>
           </Link>
           <li className="hidden lg:flex items-center gap-5">
             {navlinks.map((navlink, index) => (

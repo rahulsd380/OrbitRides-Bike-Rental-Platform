@@ -4,13 +4,27 @@ import RentalTab from "./RentalTab";
 import UnpaidItemsTable from "./UnpaidItemsTable";
 import { useGetMyRentalsQuery } from "../../redux/Features/Rentals/rentalsApi";
 
+type TRental ={
+  bikeId: string;
+  isPaid: boolean;
+  isReturned: boolean;
+  returnTime: string;
+  startTime: string;
+  totalCost: number;
+  userId: string;
+  __v: number;
+  _id: string;
+}
+
+
 const MyRentals = () => {
   const [rentalTab, setRentalTab] = useState<"Paid" | "Unpaid">("Unpaid");
 
   const { data, isLoading } = useGetMyRentalsQuery({});
+  console.log(data);
 
-  const paidBike = data?.data?.filter((bike) => bike?.totalCost > 0);
-  const unPaidBike = data?.data?.filter((bike) => bike?.totalCost === 0);
+  const paidBike = data?.data?.filter((bike:TRental) => bike?.totalCost > 0);
+  const unPaidBike = data?.data?.filter((bike:TRental) => bike?.totalCost === 0);
 
   console.log(paidBike);
   console.log(data);

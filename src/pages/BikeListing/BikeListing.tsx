@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import Button from "../../components/Button/Button";
 import { useGetAllBikesQuery } from "../../redux/Features/Bikes/bikeApi";
 import { TBike } from "./bike.types";
 import BikeCard from "./BikeCard";
@@ -7,6 +6,8 @@ import BikeCardLoader from "../../components/Loaders/BikeCardLoader";
 
 const BikeListing = () => {
   const { data, isLoading: isBikeLoading } = useGetAllBikesQuery({});
+
+const bikes: TBike[] = data?.data || [];
   const [filteredBikes, setFilteredBikes] = useState<TBike[]>([]);
   
   // Filters state
@@ -15,8 +16,8 @@ const BikeListing = () => {
   const [isAvailableFilter, setIsAvailableFilter] = useState<string>("");
 
   // Unique brand and model items
-  const modelItems: string[] = [...new Set(data?.data?.map((item) => item.model))];
-  const brandItems: string[] = [...new Set(data?.data?.map((item) => item.brand))];
+  const modelItems: string[] = [...new Set(bikes.map((item) => item.model))];
+const brandItems: string[] = [...new Set(bikes.map((item) => item.brand))];
   const availabilityItems = ["Available", "Unavailable"];
 
   // Apply filters whenever data or filters change
@@ -26,16 +27,16 @@ const BikeListing = () => {
     let filtered = data.data;
 
     if (selectedBrand) {
-      filtered = filtered.filter((bike) => bike.brand === selectedBrand);
+      filtered = filtered.filter((bike:TBike) => bike.brand === selectedBrand);
     }
 
     if (selectedModel) {
-      filtered = filtered.filter((bike) => bike.model === selectedModel);
+      filtered = filtered.filter((bike:TBike) => bike.model === selectedModel);
     }
 
     if (isAvailableFilter) {
       const isAvailableBool = isAvailableFilter === "Available";
-      filtered = filtered.filter((bike) => bike.isAvailable === isAvailableBool);
+      filtered = filtered.filter((bike:TBike) => bike.isAvailable === isAvailableBool);
     }
 
     setFilteredBikes(filtered);

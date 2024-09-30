@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import search from "../../../assets/Icons/search.svg";
 import searchWhite from "../../../assets/Icons/search-white.svg";
 import myProfile from "../../../assets/Icons/my-profile.svg";
 import editProfile from "../../../assets/Icons/edit-profile.svg";
@@ -11,7 +10,7 @@ import user from "../../../assets/Icons/user.svg";
 import downArrow from "../../../assets/Icons/down-arrow-dark.svg";
 import { useAppDispatch } from "../../../redux/hooks";
 import { logout } from "../../../redux/Features/Auth/authSlice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import DashboardHamburgerMenu from "../../DashboardHamburgerMenu/DashboardHamburgerMenu";
 import ThemeSwitcher from "../../ThemeSwitcher/ThemeSwitcher";
 
@@ -33,17 +32,17 @@ const DashboardHeader = () => {
       },
       {
         pathname: "Inbox",
-        link: "/dashboard/my-profile",
+        link: "/dashboard/inbox",
         icon: inbox,
       },
       {
         pathname: "Setting",
-        link: "/dashboard/my-profile",
+        link: "/dashboard/setting",
         icon: setting,
       },
       {
         pathname: "Help",
-        link: "/dashboard/my-profile",
+        link: "/dashboard/help",
         icon: help,
       },
     ];
@@ -73,7 +72,7 @@ const DashboardHeader = () => {
       <div className="flex items-center gap-7">
       <ThemeSwitcher/>
 
-<div ref={dropDownRef} className="relative w-fit">
+    <div ref={dropDownRef} className="relative w-fit">
     <div
       onClick={() => setOpen((prev) => !prev)}
       className="flex items-center gap-4 cursor-pointer"
@@ -94,38 +93,40 @@ const DashboardHeader = () => {
         <img src={downArrow} alt="" className="size-6" />
       </div>
     </div>
-    <ul
-      className={`${
-        open
-          ? "visible translate-y-0 duration-300"
-          : "invisible translate-y-4"
-      } absolute top-16 z-50 w-full  bg-white dark:bg-[#E9ECF2] shadow rounded-b-lg py-2`}
-    >
-      {items.map((item, idx) => (
-        <li
-          key={idx}
-          className={` px-4 py-2 ${
-            open ? "opacity-100 duration-300" : "opacity-0"
-          } hover:text-primary-10 cursor-pointer text-body-text`}
+    <div
+          className={`${
+            open
+              ? "visible translate-y-0 duration-300"
+              : "invisible translate-y-4"
+          } absolute top-14 z-50 w-48 bg-white shadow rounded-b-lg py-2 -right-5`}
         >
-          <div className="flex items-center gap-2">
-            <img src={item.icon} alt="" className="size-5" />
-            {item.pathname}
+          {items.map((item, idx) => (
+            <Link to={item.link}>
+            <div
+              key={idx}
+              className={`px-4 py-2 ${
+                open ? "opacity-100 duration-300" : "opacity-0"
+              } hover:text-primary-10 cursor-pointer text-body-text`}
+            >
+              <div className="flex items-center gap-2">
+                <img src={item.icon} alt="" className="size-5" />
+                {item.pathname}
+              </div>
+            </div>
+            </Link>
+          ))}
+  
+          <div
+            className={`px-4 py-2 ${
+              open ? "opacity-100 duration-300" : "opacity-0"
+            } hover:text-primary-10 cursor-pointer text-body-text border-t border-neutral-55/20`}
+          >
+            <div onClick={handleLogout} className="flex items-center gap-2">
+              <img src={logoutIcon} alt="" className="size-5" />
+              Log Out
+            </div>
           </div>
-        </li>
-      ))}
-
-      <li
-        className={` px-4 py-2 ${
-          open ? "opacity-100 duration-300" : "opacity-0"
-        } hover:text-primary-10 cursor-pointer text-body-text border-t border-neutral-55/20`}
-      >
-        <div onClick={handleLogout} className="flex items-center gap-2">
-          <img src={logoutIcon} alt="" className="size-5" />
-          Log Out
         </div>
-      </li>
-    </ul>
   </div>
       </div>
     </div>
