@@ -3,7 +3,7 @@ import { RootState } from '../store';
 import { setUser } from '../Features/Auth/authSlice';
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: 'http://localhost:5000/api',
+  baseUrl: 'https://orbit-rides-server.vercel.app/api',
   credentials : 'include',
   prepareHeaders : (headers, {getState}) => {
     const token = (getState() as RootState).auth.token;
@@ -20,7 +20,7 @@ const baseQueryWithRefreshToken: BaseQueryFn<FetchArgs, BaseQueryApi, Definition
   console.log(result);
 
   if(result.error?.status === 401){
-    const res = await fetch('http://localhost:5000/api/auth/refresh-token', {
+    const res = await fetch('https://orbit-rides-server.vercel.app/api/auth/refresh-token', {
       credentials : 'include'
     });
 
